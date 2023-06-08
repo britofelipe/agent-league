@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Vector;
 
 public class FichaPersonagem {
+	private int id;
 	private int agilidade;
 	private int forca;
 	private int intelecto;
@@ -40,6 +41,14 @@ public class FichaPersonagem {
 		this.limitePericiasTreinadas = limitePericiasTreinadas;
 		this.equipamento = equipamento;
 		this.repoPoderes = repoPoderes;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getAgilidade() {
@@ -137,6 +146,5 @@ public class FichaPersonagem {
 	public void setRepoPoderes(Map<String, Poder> repoPoderes) {
 		this.repoPoderes = repoPoderes;
 	}
-	
-	
+
 }
