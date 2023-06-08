@@ -4,7 +4,7 @@ import java.util.Map;
 
 import models.trilha.TrilhaAbstrata;
 
-public abstract class ClasseAbstrata {
+public abstract class ClasseAbstrata implements IClasse {
 	private int nivel;
 	private int vida;
 	private int esforco;
