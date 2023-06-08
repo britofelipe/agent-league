@@ -16,13 +16,12 @@ public abstract class ClasseAbstrata implements IClasse {
 	private Map<String,Poder> repoPoderes;
 	
 	public ClasseAbstrata() {
-		super();
+
 	}
 
 	public ClasseAbstrata(int nivel, int vida, int esforco, int sanidade, int quantidadePericias,
 			String proficienciaInicialAtaque, String proficienciaInicialDefesa, TrilhaAbstrata trilha,
 			Map<String, Poder> repoPoderes) {
-		super();
 		this.nivel = nivel;
 		this.vida = vida;
 		this.esforco = esforco;
