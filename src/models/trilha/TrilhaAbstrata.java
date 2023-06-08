@@ -2,7 +2,7 @@ package models.trilha;
 
 import models.personagem.Habilidade;
 
-public abstract class TrilhaAbstrata {
+public abstract class TrilhaAbstrata implements ITrilha {
 	private String nome;
 	private String descricao;
 	private Habilidade HabilidadeNex10;
