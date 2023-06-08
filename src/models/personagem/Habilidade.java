@@ -1,5 +1,5 @@
 package models.personagem;
 
-public class Equipamento {
+public class Habilidade {
 	// TODO
 }
