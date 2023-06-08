@@ -1,10 +1,10 @@
 package models.personagem;
 
 public class Pericia implements IPericia {
-	String nome;
-	String nivelTreino;
-	int modificadorTreino;
-	int nivelAtributoBase;
+	private String nome;
+	private String nivelTreino;
+	private int modificadorTreino;
+	private int nivelAtributoBase;
 		
 	public Pericia() {
 	
