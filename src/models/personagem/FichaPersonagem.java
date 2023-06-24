@@ -19,7 +19,7 @@ public class FichaPersonagem {
 	private int limitePericiasTreinadas;
 	private Equipamento equipamento;
 	
-	private Map<String,Poder> repoPoderes;
+	private Map<String,Poder> repoPoderesPersonagem;
 
 	public FichaPersonagem() {
 
@@ -40,7 +40,7 @@ public class FichaPersonagem {
 		this.periciasTreinadas = periciasTreinadas;
 		this.limitePericiasTreinadas = limitePericiasTreinadas;
 		this.equipamento = equipamento;
-		this.repoPoderes = repoPoderes;
+		this.repoPoderesPersonagem = repoPoderes;
 	}
 	
 	public int getId() {
@@ -139,12 +139,12 @@ public class FichaPersonagem {
 		this.equipamento = equipamento;
 	}
 
-	public Map<String, Poder> getRepoPoderes() {
-		return repoPoderes;
+	public Map<String, Poder> getRepoPoderesPersonagem() {
+		return repoPoderesPersonagem;
 	}
 
-	public void setRepoPoderes(Map<String, Poder> repoPoderes) {
-		this.repoPoderes = repoPoderes;
+	public void setRepoPoderesPersonagem(Map<String, Poder> repoPoderes) {
+		this.repoPoderesPersonagem = repoPoderes;
 	}
 
 }
