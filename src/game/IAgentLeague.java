@@ -1,9 +1,9 @@
 package game;
 
-import models.personagem.FichaPersonagem;
+import models.personagem.Personagem;
 
 public interface IAgentLeague {
-	void addPersonagem(FichaPersonagem ficha);
+	void addPersonagem(Personagem ficha);
 	void removePersonagem(int id);
-	FichaPersonagem procuraPersonagem(int id);
+	Personagem procuraPersonagem(int id);
 }

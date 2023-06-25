@@ -3,13 +3,10 @@ package models.personagem;
 import java.util.Map;
 import java.util.Vector;
 
-public class FichaPersonagem {
+public class Personagem {
 	private int id;
-	private int agilidade;
-	private int forca;
-	private int intelecto;
-	private int presenca;
-	private int vigor;
+	private String nome;
+	private Atributos atributos;
 	
 	private DescricaoPersonagem descricao;
 	private ClasseAbstrata classe;
@@ -21,26 +18,32 @@ public class FichaPersonagem {
 	
 	private Map<String,Poder> repoPoderesPersonagem;
 
-	public FichaPersonagem() {
+	public Personagem() {
 
 	}
 
-	public FichaPersonagem(int agilidade, int forca, int intelecto, int presenca, int vigor,
-			DescricaoPersonagem descricao, ClasseAbstrata classe, OrigemAbstrata origem,
-			Vector<Pericia> periciasTreinadas, int limitePericiasTreinadas, Equipamento equipamento,
-			Map<String, Poder> repoPoderes) {
-		this.agilidade = agilidade;
-		this.forca = forca;
-		this.intelecto = intelecto;
-		this.presenca = presenca;
-		this.vigor = vigor;
+	public Personagem(int id, String nome, Atributos atributos, DescricaoPersonagem descricao, ClasseAbstrata classe,
+			OrigemAbstrata origem, Vector<Pericia> periciasTreinadas, int limitePericiasTreinadas,
+			Equipamento equipamento, Map<String, Poder> repoPoderesPersonagem) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.atributos = atributos;
 		this.descricao = descricao;
 		this.classe = classe;
 		this.origem = origem;
 		this.periciasTreinadas = periciasTreinadas;
 		this.limitePericiasTreinadas = limitePericiasTreinadas;
 		this.equipamento = equipamento;
-		this.repoPoderesPersonagem = repoPoderes;
+		this.repoPoderesPersonagem = repoPoderesPersonagem;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public int getId() {
@@ -49,46 +52,6 @@ public class FichaPersonagem {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getAgilidade() {
-		return agilidade;
-	}
-
-	public void setAgilidade(int agilidade) {
-		this.agilidade = agilidade;
-	}
-
-	public int getForca() {
-		return forca;
-	}
-
-	public void setForca(int forca) {
-		this.forca = forca;
-	}
-
-	public int getIntelecto() {
-		return intelecto;
-	}
-
-	public void setIntelecto(int intelecto) {
-		this.intelecto = intelecto;
-	}
-
-	public int getPresenca() {
-		return presenca;
-	}
-
-	public void setPresenca(int presenca) {
-		this.presenca = presenca;
-	}
-
-	public int getVigor() {
-		return vigor;
-	}
-
-	public void setVigor(int vigor) {
-		this.vigor = vigor;
 	}
 
 	public DescricaoPersonagem getDescricao() {

@@ -7,14 +7,26 @@ public class Arma {
     private int danoMax;
     private String efeitoCritico;
     private String alcance;
-    private String tipoDeDano;
+    private String tipoDano;
     private int espacosQueOcupa;
 
     public Arma(){
 
     }
+    
+    public Arma(String nome, String descricao, int categoria, int danoMax, String efeitoCritico, String alcance,
+			String tipoDeDano, int espacosQueOcupa) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.categoria = categoria;
+		this.danoMax = danoMax;
+		this.efeitoCritico = efeitoCritico;
+		this.alcance = alcance;
+		this.tipoDano = tipoDano;
+		this.espacosQueOcupa = espacosQueOcupa;
+	}
 
-    public String getNome(){
+	public String getNome(){
         return this.nome;
     }
 
@@ -38,8 +50,8 @@ public class Arma {
         return this.alcance;
     }
 
-    public String getTipoDeDano(){
-        return this.tipoDeDano;
+    public String getTipoDano(){
+        return this.tipoDano;
     }
 
     public int getEspacosQueOcupa(){

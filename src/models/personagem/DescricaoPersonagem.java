@@ -1,7 +1,6 @@
 package models.personagem;
 
 public class DescricaoPersonagem {
-	private String nome;
 	private String genero;
 	private int idade;
 	private String aparencia;
@@ -14,20 +13,11 @@ public class DescricaoPersonagem {
 
 	public DescricaoPersonagem(String nome, String genero, int idade, String aparencia, String historico,
 			String objetivo) {
-		this.nome = nome;
 		this.genero = genero;
 		this.idade = idade;
 		this.aparencia = aparencia;
 		this.historico = historico;
 		this.objetivo = objetivo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public String getGenero() {
