@@ -27,7 +27,7 @@ public class AgentLeague implements IAgentLeague {
 		this.repoPersonagens = repoPersonagens;
 	}
 	
-	public int getNumeroPersonagem( ) {
+	public int getNumeroPersonagens( ) {
 		return this.numeroPersonagens;
 	}
 	

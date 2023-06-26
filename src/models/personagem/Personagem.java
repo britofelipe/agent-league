@@ -45,7 +45,7 @@ public class Personagem {
 	}
 	
 	public String getJogador() {
-		return nome;
+		return jogador;
 	}
 
 	public void setJogador(String nome) {

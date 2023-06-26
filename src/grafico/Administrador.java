@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ListCellRenderer;
 
 import game.AgentLeague;
+import grafico.ficha.FichaPersonagem;
 import grafico.ficha.InformacaoBasica;
 import models.personagem.Personagem;
 
@@ -48,9 +49,10 @@ public class Administrador extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String nomeJogador = JOptionPane.showInputDialog(Administrador.this, "Digite o nome do jogador:");
         if (nomeJogador != null) {
-            Personagem personagem = new Personagem(game.getNumeroPersonagem() + 1, nomeJogador);
+            Personagem personagem = new Personagem(game.getNumeroPersonagens() + 1, nomeJogador);
             game.addPersonagem(personagem);
             listModel.addElement(personagem);
+            FichaPersonagem fichaPersonagem = new FichaPersonagem(personagem);
         }
     }
     
