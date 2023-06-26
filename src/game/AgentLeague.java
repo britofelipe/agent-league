@@ -2,6 +2,7 @@ package game;
 
 import java.util.Vector;
 
+import grafico.Administrador;
 import models.personagem.Personagem;
 
 public class AgentLeague implements IAgentLeague {
@@ -9,7 +10,8 @@ public class AgentLeague implements IAgentLeague {
 	private int numeroPersonagens;
 	
 	public AgentLeague() {
-
+		this.numeroPersonagens = 0;
+		this.repoPersonagens = new Vector<Personagem>();
 	}
 
 	public AgentLeague(Vector<Personagem> repoPersonagens) {
@@ -25,8 +27,12 @@ public class AgentLeague implements IAgentLeague {
 		this.repoPersonagens = repoPersonagens;
 	}
 	
-	public void addPersonagem(Personagem ficha) {
-		this.repoPersonagens.add(ficha);
+	public int getNumeroPersonagem( ) {
+		return this.numeroPersonagens;
+	}
+	
+	public void addPersonagem(Personagem personagem) {
+		this.repoPersonagens.add(personagem);
 		numeroPersonagens++;
 	}
 	

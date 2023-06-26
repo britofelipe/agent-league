@@ -5,6 +5,7 @@ import java.util.Vector;
 
 public class Personagem {
 	private int id;
+	private String jogador;
 	private String nome;
 	private Atributos atributos;
 	
@@ -21,12 +22,17 @@ public class Personagem {
 	public Personagem() {
 
 	}
+	
+	public Personagem(int id, String jogador) {
+		this.id = id;
+		this.jogador = jogador;
+	}
 
-	public Personagem(int id, String nome, Atributos atributos, DescricaoPersonagem descricao, ClasseAbstrata classe,
+	public Personagem(int id, String jogador, String nome, Atributos atributos, DescricaoPersonagem descricao, ClasseAbstrata classe,
 			OrigemAbstrata origem, Vector<Pericia> periciasTreinadas, int limitePericiasTreinadas,
 			Equipamento equipamento, Map<String, Poder> repoPoderesPersonagem) {
-		super();
 		this.id = id;
+		this.jogador = jogador;
 		this.nome = nome;
 		this.atributos = atributos;
 		this.descricao = descricao;
@@ -36,6 +42,14 @@ public class Personagem {
 		this.limitePericiasTreinadas = limitePericiasTreinadas;
 		this.equipamento = equipamento;
 		this.repoPoderesPersonagem = repoPoderesPersonagem;
+	}
+	
+	public String getJogador() {
+		return nome;
+	}
+
+	public void setJogador(String nome) {
+		this.nome = nome;
 	}
 
 	public String getNome() {
