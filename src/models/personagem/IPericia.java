@@ -2,7 +2,6 @@ package models.personagem;
 
 public interface IPericia {
 	void aumentaTreino();
-	void setModificadorTreino();
 	boolean dependeNivelTreino();
 	boolean dependeCarga();
 	boolean dependeKitUtensilios();
@@ -10,5 +9,4 @@ public interface IPericia {
 	String getNivelTreino();
 	int getModificadorTreino();
 	int getNivelAtributoBase();
-	int teste();
 }
