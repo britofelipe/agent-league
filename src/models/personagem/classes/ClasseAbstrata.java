@@ -1,7 +1,8 @@
-package models.personagem;
+package models.personagem.classes;
 
 import java.util.Map;
 
+import models.personagem.Poder;
 import models.trilha.TrilhaAbstrata;
 
 public abstract class ClasseAbstrata implements IClasse {
