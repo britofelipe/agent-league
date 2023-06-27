@@ -29,8 +29,5 @@ public class Poder implements IPoder {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public void ativarEfeito() {
-		// TODO 
-	}
+	
 }
