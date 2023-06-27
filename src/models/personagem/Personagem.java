@@ -59,6 +59,30 @@ public class Personagem {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Atributos getAtributos() {
+		return this.atributos;
+	}
+
+	public int getAgilidade() {
+		return this.atributos.getAgilidade();
+	}
+
+	public int getForca() {
+		return this.atributos.getForca();
+	}
+
+	public int getIntelecto() {
+		return this.atributos.getIntelecto();
+	}
+
+	public int getPresenca() {
+		return this.atributos.getPresenca();
+	}
+
+	public int getVigor() {
+		return this.atributos.getVigor();
+	}
 	
 	public int getId() {
 		return id;

@@ -22,7 +22,7 @@ public class Arma {
 		this.danoMax = danoMax;
 		this.efeitoCritico = efeitoCritico;
 		this.alcance = alcance;
-		this.tipoDano = tipoDano;
+		this.tipoDano = tipoDeDano;
 		this.espacosQueOcupa = espacosQueOcupa;
 	}
 
