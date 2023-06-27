@@ -1,12 +1,12 @@
 package models.trilha;
 
-import models.personagem.Habilidade;
+import models.personagem.Poder;
 
 public interface ITrilha {
 	String getNome();
 	String getDescricao();
-	Habilidade getHabilidadeNex10();
-	Habilidade getHabilidadeNex40();
-	Habilidade getHabilidadeNex65();
-	Habilidade getHabilidadeNex99();
+	Poder getPoderNex10();
+	Poder getPoderNex40();
+	Poder getPoderNex65();
+	Poder getPoderNex99();
 }

@@ -1,74 +1,51 @@
 package models.trilha;
 
-import models.personagem.Habilidade;
+import models.personagem.Poder;
 
 public abstract class TrilhaAbstrata implements ITrilha {
-	private String nome;
-	private String descricao;
-	private Habilidade HabilidadeNex10;
-	private Habilidade HabilidadeNex40;
-	private Habilidade HabilidadeNex65;
-	private Habilidade HabilidadeNex99;
+	protected String nome;
+	protected String descricao;
+	protected Poder poderNex10;
+	protected Poder poderNex40;
+	protected Poder poderNex65;
+	protected Poder poderNex99;
 	
 	public TrilhaAbstrata() {
 
 	}
 
-	public TrilhaAbstrata(String nome, String descricao, Habilidade habilidadeNex10, Habilidade habilidadeNex40,
-			Habilidade habilidadeNex65, Habilidade habilidadeNex99) {
+	public TrilhaAbstrata(String nome, String descricao, Poder poderNex10, Poder poderNex40,
+			Poder poderNex65, Poder poderNex99) {
 		this.nome = nome;
 		this.descricao = descricao;
-		HabilidadeNex10 = habilidadeNex10;
-		HabilidadeNex40 = habilidadeNex40;
-		HabilidadeNex65 = habilidadeNex65;
-		HabilidadeNex99 = habilidadeNex99;
+		this.poderNex10 = poderNex10;
+		this.poderNex40 = poderNex40;
+		this.poderNex65 = poderNex65;
+		this.poderNex99 = poderNex99;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public Poder getPoderNex10() {
+		return poderNex10;
 	}
 
-	public Habilidade getHabilidadeNex10() {
-		return HabilidadeNex10;
+	public Poder getPoderNex40() {
+		return poderNex40;
 	}
 
-	public void setHabilidadeNex10(Habilidade habilidadeNex10) {
-		HabilidadeNex10 = habilidadeNex10;
+	public Poder getPoderNex65() {
+		return poderNex65;
 	}
 
-	public Habilidade getHabilidadeNex40() {
-		return HabilidadeNex40;
+	public Poder getPoderNex99() {
+		return poderNex99;
 	}
 
-	public void setHabilidadeNex40(Habilidade habilidadeNex40) {
-		HabilidadeNex40 = habilidadeNex40;
-	}
-
-	public Habilidade getHabilidadeNex65() {
-		return HabilidadeNex65;
-	}
-
-	public void setHabilidadeNex65(Habilidade habilidadeNex65) {
-		HabilidadeNex65 = habilidadeNex65;
-	}
-
-	public Habilidade getHabilidadeNex99() {
-		return HabilidadeNex99;
-	}
-
-	public void setHabilidadeNex99(Habilidade habilidadeNex99) {
-		HabilidadeNex99 = habilidadeNex99;
-	}
 }
