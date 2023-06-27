@@ -3,15 +3,18 @@ package models.personagem;
 import java.util.Map;
 import java.util.Vector;
 
+import models.personagem.classes.ClasseAbstrata;
+import models.personagem.origens.OrigemAbstrata;
+
 public class Personagem {
 	private int id;
 	private String jogador;
 	private String nome;
 	private Atributos atributos;
-	
-	private DescricaoPersonagem descricao;
+
 	private ClasseAbstrata classe;
 	private OrigemAbstrata origem;
+	private DescricaoPersonagem descricao;
 
 	private Vector<Pericia> periciasTreinadas;
 	private int limitePericiasTreinadas;
@@ -42,6 +45,7 @@ public class Personagem {
 		this.limitePericiasTreinadas = limitePericiasTreinadas;
 		this.equipamento = equipamento;
 		this.repoPoderesPersonagem = repoPoderesPersonagem;
+
 	}
 	
 	public String getJogador() {
@@ -109,7 +113,7 @@ public class Personagem {
 	}
 
 	public OrigemAbstrata getOrigem() {
-		return origem;
+		return this.origem;
 	}
 
 	public void setOrigem(OrigemAbstrata origem) {
