@@ -1,7 +1,7 @@
 package models.personagem.origens;
 
-import models.personagem.Pericia;
 import models.personagem.Poder;
+import models.personagem.pericia.Pericia;
 
 public interface IOrigem {
 	Pericia getPericiaTreinada1();

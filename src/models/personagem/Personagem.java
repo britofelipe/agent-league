@@ -4,7 +4,9 @@ import java.util.Map;
 import java.util.Vector;
 
 import models.personagem.classes.ClasseAbstrata;
+import models.personagem.equipamentos.Equipamento;
 import models.personagem.origens.OrigemAbstrata;
+import models.personagem.pericia.Pericia;
 
 public class Personagem {
 	private int id;

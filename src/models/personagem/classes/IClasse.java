@@ -1,4 +1,4 @@
-package models.personagem;
+package models.personagem.classes;
 
 public interface IClasse {
 	void subirDeNivel();

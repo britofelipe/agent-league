@@ -1,6 +1,6 @@
 package models.trilha;
 
-import models.personagem.Poder;
+import models.personagem.poderes.Poder;
 
 public abstract class TrilhaAbstrata implements ITrilha {
 	protected String nome;
