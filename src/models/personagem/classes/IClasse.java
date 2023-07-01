@@ -1,19 +1,20 @@
 package models.personagem.classes;
 
+import models.personagem.Atributos;
+
 public interface IClasse {
-	void subirDeNivel();
-	int getNivel();
+	void subirDeNex(Atributos atributos);
+	int getNex();
 	void curarVida(int cura);
 	void perderVida(int dano);
 	int getVida();
-	int curarEsforco(int cura);
-	int perderEsforco(int dano);
+	void curarEsforco(int cura);
+	void perderEsforco(int dano);
 	int getEsforco();
-	int curarSanidade(int cura);
-	int perderSanidade(int dano);
+	void curarSanidade(int cura);
+	void perderSanidade(int dano);
 	int getSanidade();
 	int getQuantidadePericias();
-	int getProficiaInicialAtaque();
-	int getProficiaInicialDefesa();
-	String escolherNovoPoder(String nome);
+	String getProficienciaArmas();
+	String getProficienciaProtecoes();
 }

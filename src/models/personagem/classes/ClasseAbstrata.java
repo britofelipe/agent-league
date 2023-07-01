@@ -2,44 +2,49 @@ package models.personagem.classes;
 
 import java.util.Map;
 
-import models.personagem.Poder;
+import models.personagem.Atributos;
+import models.personagem.pericias.Pericia;
+import models.personagem.poderes.Poder;
 import models.trilha.TrilhaAbstrata;
 
 public abstract class ClasseAbstrata implements IClasse {
-	private int nivel;
-	private int vida;
-	private int esforco;
-	private int sanidade;
-	private int quantidadePericias;
-	private String proficienciaInicialAtaque;
-	private String proficienciaInicialDefesa;
-	private TrilhaAbstrata trilha;
-	private Map<String,Poder> repoPoderes;
+	protected int nex;
+	protected int vida;
+	protected int esforco;
+	protected int sanidade;
+	protected int quantidadePericias;
+	protected Pericia periciaTreinada1;
+	protected Pericia periciaTreinada2;
+	protected String proficienciaArmas;
+	protected String proficienciaProtecoes;
+	protected TrilhaAbstrata trilha;
+	protected Map<String,Poder> repoPoderesDaClasse;
 	
 	public ClasseAbstrata() {
-
+		
 	}
 
-	public ClasseAbstrata(int nivel, int vida, int esforco, int sanidade, int quantidadePericias,
-			String proficienciaInicialAtaque, String proficienciaInicialDefesa, TrilhaAbstrata trilha,
-			Map<String, Poder> repoPoderes) {
-		this.nivel = nivel;
+	public ClasseAbstrata(int nex, int vida, int esforco, int sanidade, int quantidadePericias,
+			String proficienciaArmas, String proficienciaProtecoes, TrilhaAbstrata trilha,
+			Pericia periciaTreinada1, Pericia periciaTreinada2) {
+		this.nex = nex;
 		this.vida = vida;
 		this.esforco = esforco;
 		this.sanidade = sanidade;
 		this.quantidadePericias = quantidadePericias;
-		this.proficienciaInicialAtaque = proficienciaInicialAtaque;
-		this.proficienciaInicialDefesa = proficienciaInicialDefesa;
+		this.proficienciaArmas = proficienciaArmas;
+		this.proficienciaProtecoes = proficienciaProtecoes;
 		this.trilha = trilha;
-		this.repoPoderes = repoPoderes;
+		this.periciaTreinada1 = periciaTreinada1;
+		this.periciaTreinada2 = periciaTreinada2;
 	}
 
-	public int getNivel() {
-		return nivel;
+	public int getNex() {
+		return nex;
 	}
 
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
+	public void setNex(int nex) {
+		this.nex = nex;
 	}
 
 	public int getVida() {
@@ -74,35 +79,70 @@ public abstract class ClasseAbstrata implements IClasse {
 		this.quantidadePericias = quantidadePericias;
 	}
 
-	public String getProficienciaInicialAtaque() {
-		return proficienciaInicialAtaque;
+	public String getProficienciaArmas() {
+		return this.proficienciaArmas;
 	}
 
-	public void setProficienciaInicialAtaque(String proficienciaInicialAtaque) {
-		this.proficienciaInicialAtaque = proficienciaInicialAtaque;
+	public void setProficienciaArmas(String proficienciaArmas) {
+		this.proficienciaArmas = proficienciaArmas;
 	}
 
-	public String getProficienciaInicialDefesa() {
-		return proficienciaInicialDefesa;
+	public String getProficienciaProtecoes() {
+		return this.proficienciaProtecoes;
 	}
 
-	public void setProficienciaInicialDefesa(String proficienciaInicialDefesa) {
-		this.proficienciaInicialDefesa = proficienciaInicialDefesa;
+	public void setProficienciaProtecoes(String proficienciaProtecoes) {
+		this.proficienciaProtecoes = proficienciaProtecoes;
 	}
 
 	public TrilhaAbstrata getTrilha() {
-		return trilha;
+		return this.trilha;
 	}
 
 	public void setTrilha(TrilhaAbstrata trilha) {
 		this.trilha = trilha;
 	}
 
-	public Map<String, Poder> getRepoPoderes() {
-		return repoPoderes;
+	public Map<String, Poder> getrepoPoderesDaClasse() {
+		return this.repoPoderesDaClasse;
 	}
 
-	public void setRepoPoderes(Map<String, Poder> repoPoderes) {
-		this.repoPoderes = repoPoderes;
-	}	
+	public void curarVida(int cura) {
+        if(cura >= 0)
+			this.vida += cura;
+		// exceção cura negativa
+    }
+
+    public void perderVida(int dano) {
+        if(dano >= 0)
+			this.vida -= dano;
+		// exceção dano negativo
+    }
+
+    public void curarEsforco(int cura) {
+        if(cura >= 0)
+			this.esforco += cura;
+		// exceção cura negativa
+    }
+
+    public void perderEsforco(int dano) {
+        if(dano >= 0)
+			this.esforco -= dano;
+		// exceção dano negativo
+    }
+
+    public void curarSanidade(int cura) {
+        if(cura >= 0)
+			this.sanidade += cura;
+		// exceção cura negativa
+    }
+
+    public void perderSanidade(int dano) {
+        if(dano >= 0)
+			this.sanidade -= dano;
+		// exceção dano negativo
+    }
+
+	public abstract void subirDeNex(Atributos atributos);
+
 }
