@@ -1,7 +1,7 @@
 import game.AgentLeague;
-import grafico.ficha.*;
+import grafics.*;
+import grafics.ficha.*;
 import models.personagem.Personagem;
-import grafico.*;
 
 public class Main {
 

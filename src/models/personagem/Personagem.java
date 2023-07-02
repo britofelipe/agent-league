@@ -3,10 +3,11 @@ package models.personagem;
 import java.util.Map;
 import java.util.Vector;
 
-import models.personagem.classes.ClasseAbstrata;
-import models.personagem.equipamentos.Equipamento;
-import models.personagem.origens.OrigemAbstrata;
-import models.personagem.pericia.Pericia;
+import models.classes.ClasseAbstrata;
+import models.equipamentos.Equipamento;
+import models.origens.OrigemAbstrata;
+import models.pericias.Pericia;
+import models.poderes.*;
 
 public class Personagem {
 	private int id;
