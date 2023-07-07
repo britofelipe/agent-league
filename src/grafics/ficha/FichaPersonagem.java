@@ -35,6 +35,17 @@ public class FichaPersonagem extends JFrame {
         JPanel descricaodoAgente = new JPanel();
         JPanel fichadeRituais = new JPanel();
 
+        JScrollPane scrollFichaDoAgente = new JScrollPane(criaPainelFichaDoAgente(fichadoAgente));
+        
+        fichaCompleta.addTab("Ficha do Agente", scrollFichaDoAgente);
+        fichaCompleta.addTab("Descrição do Agente", descricaodoAgente);
+        fichaCompleta.addTab("Ficha de Rituais", fichadeRituais);
+        add(fichaCompleta);
+        
+        setVisible(true);
+    }
+
+    private JPanel criaPainelFichaDoAgente(JPanel fichadoAgente){
         // Atribuindo a configuração de BorderLayout ao painel Ficha do Agente e configurando para o JFrame ficar maximizado ao abrir a ficha
         fichadoAgente.setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -152,28 +163,93 @@ public class FichaPersonagem extends JFrame {
         JPanel atributosPanel = new JPanel();
         JPanel periciasPanel = new JPanel();
 
+        atributosPanel.setBorder(blackline);
+
         JLabel atributoForLabel = new JLabel("Força: ");
         JLabel atributoAgiLabel = new JLabel("Agilidade: ");
         JLabel atributoIntLabel = new JLabel("Inteligência: ");
         JLabel atributoVigLabel = new JLabel("Vigor: ");
         JLabel atributoPreLabel = new JLabel("Presença: ");
 
-        MaskFormatter mascaraValorAtributo = null;
+        MaskFormatter mascaraValorAtributoPericiais = null;
 
         try{
-            mascaraValorAtributo = new MaskFormatter("##");
-            mascaraValorAtributo.setPlaceholderCharacter('_');
+            mascaraValorAtributoPericiais = new MaskFormatter("##");
+            mascaraValorAtributoPericiais.setPlaceholderCharacter('_');
         }
         catch(ParseException excp){
             System.err.println("Erro na formatação: " + excp.getMessage());
             System.exit(-1);
         }
 
-        JFormattedTextField valorAtributoForFormattedTextField = new JFormattedTextField(mascaraValorAtributo);
-        JFormattedTextField valorAtributoAgiFormattedTextField = new JFormattedTextField(mascaraValorAtributo);
-        JFormattedTextField valorAtributoIntFormattedTextField = new JFormattedTextField(mascaraValorAtributo);
-        JFormattedTextField valorAtributoVigFormattedTextField = new JFormattedTextField(mascaraValorAtributo);
-        JFormattedTextField valorAtributoPreFormattedTextField = new JFormattedTextField(mascaraValorAtributo);
+        JFormattedTextField valorAtributoForFormattedTextField = new JFormattedTextField(mascaraValorAtributoPericiais);
+        JFormattedTextField valorAtributoAgiFormattedTextField = new JFormattedTextField(mascaraValorAtributoPericiais);
+        JFormattedTextField valorAtributoIntFormattedTextField = new JFormattedTextField(mascaraValorAtributoPericiais);
+        JFormattedTextField valorAtributoVigFormattedTextField = new JFormattedTextField(mascaraValorAtributoPericiais);
+        JFormattedTextField valorAtributoPreFormattedTextField = new JFormattedTextField(mascaraValorAtributoPericiais);
+
+        GroupLayout groupLayoutTabelaAtributosValores = new GroupLayout(atributosPanel);
+        groupLayoutTabelaAtributosValores.setAutoCreateGaps(true);
+        groupLayoutTabelaAtributosValores.setAutoCreateContainerGaps(true);
+        atributosPanel.setLayout(groupLayoutTabelaAtributosValores);
+
+        GroupLayout.SequentialGroup groupTabelaAtributosValoresHorizontal = groupLayoutTabelaAtributosValores.createSequentialGroup();
+        groupTabelaAtributosValoresHorizontal.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup()
+            .addComponent(atributoForLabel)
+            .addComponent(atributoAgiLabel)
+            .addComponent(atributoIntLabel)
+            .addComponent(atributoVigLabel)
+            .addComponent(atributoPreLabel)
+        );
+        groupTabelaAtributosValoresHorizontal.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup()
+            .addComponent(valorAtributoForFormattedTextField)
+            .addComponent(valorAtributoAgiFormattedTextField)
+            .addComponent(valorAtributoIntFormattedTextField)
+            .addComponent(valorAtributoVigFormattedTextField)
+            .addComponent(valorAtributoPreFormattedTextField)
+        );
+        groupLayoutTabelaAtributosValores.setHorizontalGroup(groupTabelaAtributosValoresHorizontal);
+
+        GroupLayout.SequentialGroup groupTabelaAtributosValoresVertical = groupLayoutTabelaAtributosValores.createSequentialGroup();
+        groupTabelaAtributosValoresVertical.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup(Alignment.BASELINE)
+            .addComponent(atributoForLabel)
+            .addComponent(valorAtributoForFormattedTextField)
+        );
+        groupTabelaAtributosValoresVertical.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup(Alignment.BASELINE)
+            .addComponent(atributoAgiLabel)
+            .addComponent(valorAtributoAgiFormattedTextField)
+        );
+        groupTabelaAtributosValoresVertical.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup(Alignment.BASELINE)
+            .addComponent(atributoIntLabel)
+            .addComponent(valorAtributoIntFormattedTextField)
+        );
+        groupTabelaAtributosValoresVertical.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup(Alignment.BASELINE)
+            .addComponent(atributoVigLabel)
+            .addComponent(valorAtributoVigFormattedTextField)
+        );
+        groupTabelaAtributosValoresVertical.addGroup(groupLayoutTabelaAtributosValores.createParallelGroup(Alignment.BASELINE)
+            .addComponent(atributoPreLabel)
+            .addComponent(valorAtributoPreFormattedTextField)
+        );
+        groupLayoutTabelaAtributosValores.setVerticalGroup(groupTabelaAtributosValoresVertical);
+
+        String[] nomePericiais = {"Acrobacia (Penalidade de carga)", "Adestramento(Somente treinada)", "Artes(Somente treinada)", "Atletismo", "Atualidade", "Ciências(Somente treinada)", 
+            "Crime(Penalidade de carga e Somente treinada)", "Diplomacia", "Enganação", "Fortitude", "Furtividade(Penalidade de carga)", "Iniciativa", "Intimidação", "Intuição", "Investigação", "Luta", 
+            "Medicina", "Ocultismo(Somente treinada)", "Percepção", "Pilotagem(Somente treinada)", "Pontaria", "Profissão(Somente treinada)", "Reflexos", "Religião(Somente treinada)", "Sobrevivência",
+            "Tática(Somente treinada)", "Tecnologia(Somente treinada)", "Vontade"};
+        
+
+        JCheckBox[] boxes = new JCheckBox[nomePericiais.length];
+        for(int i = 0; i < boxes.length; i++){
+            boxes[i] = new JCheckBox(nomePericiais[i]);
+        }
+
+        BoxLayout boxesLayout = new BoxLayout(periciasPanel, BoxLayout.Y_AXIS);
+        periciasPanel.setLayout(boxesLayout);
+
+        for(int i = 0; i < boxes.length; i++){
+            periciasPanel.add(boxes[i]);
+        }
 
         GroupLayout.SequentialGroup groupAtributosPericiasHorizontal = groupLayoutJanelaPrincipalWest.createSequentialGroup();
         groupAtributosPericiasHorizontal.addGroup(groupLayoutJanelaPrincipalWest.createParallelGroup()
@@ -201,12 +277,7 @@ public class FichaPersonagem extends JFrame {
         fichadoAgente.add(janelaPrincipalWest, BorderLayout.WEST);
 
         fichadoAgente.add(janelaPrincipalNorth, BorderLayout.NORTH);
-        
-        fichaCompleta.addTab("Ficha do Agente", fichadoAgente);
-        fichaCompleta.addTab("Descrição do Agente", descricaodoAgente);
-        fichaCompleta.addTab("Ficha de Rituais", fichadeRituais);
-        add(fichaCompleta);
-        
-        setVisible(true);
+
+        return fichadoAgente;
     }
 }
