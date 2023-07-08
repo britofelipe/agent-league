@@ -27,12 +27,28 @@ public class Atributos {
 		this.agilidade = agilidade;
 	}
 
+	public void addAgilidade() {
+		if(this.agilidade < 5) {
+			this.agilidade++;
+		} else {
+			// atributo já no máximo
+		}
+	}
+
 	public int getForca() {
 		return forca;
 	}
 
 	public void setForca(int forca) {
 		this.forca = forca;
+	}
+
+	public void addForca() {
+		if(this.forca < 5) {
+			this.forca++;
+		} else {
+			// atributo já no máximo
+		}
 	}
 
 	public int getIntelecto() {
@@ -43,6 +59,14 @@ public class Atributos {
 		this.intelecto = intelecto;
 	}
 
+	public void addIntelecto() {
+		if(this.intelecto < 5) {
+			this.intelecto++;
+		} else {
+			// atributo já no máximo
+		}
+	}
+
 	public int getPresenca() {
 		return presenca;
 	}
@@ -51,12 +75,28 @@ public class Atributos {
 		this.presenca = presenca;
 	}
 
+	public void addPresenca() {
+		if(this.presenca < 5) {
+			this.presenca++;
+		} else {
+			// atributo já no máximo
+		}
+	}
+
 	public int getVigor() {
 		return vigor;
 	}
 
 	public void setVigor(int vigor) {
 		this.vigor = vigor;
+	}
+
+	public void addVigor() {
+		if(this.vigor < 5) {
+			this.vigor++;
+		} else {
+			// atributo já no máximo
+		}
 	}
 	
 }

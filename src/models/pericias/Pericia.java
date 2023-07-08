@@ -9,10 +9,6 @@ public class Pericia implements IPericia {
 	private boolean dependeNivelTreino;
 	private boolean dependeCarga;
 	private boolean dependeKitUtensilios;
-		
-	public Pericia() {
-	
-	}
 
 	public Pericia(String nome, String nivelTreino, int modificadorTreino, int nivelAtributoBase, boolean dependeNivelTreino,
 	boolean dependeCarga, boolean dependeKitUtensilios) {

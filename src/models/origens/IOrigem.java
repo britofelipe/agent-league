@@ -4,8 +4,11 @@ import models.poderes.Poder;
 import models.pericias.Pericia;
 
 public interface IOrigem {
+	String getNome();
 	Pericia getPericiaTreinada1();
 	Pericia getPericiaTreinada2();
-	Poder getPoder();
 	String getDescricao();
+	void setDescricao(String descricao);
+	Poder getPoder();
+	void setPoder(Poder poder);
 }

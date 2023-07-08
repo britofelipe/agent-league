@@ -3,7 +3,6 @@ package models.classes;
 import java.util.Map;
 
 import models.personagem.*;
-import models.pericias.Pericia;
 import models.poderes.Poder;
 import models.trilhas.TrilhaAbstrata;
 
@@ -13,20 +12,21 @@ public abstract class ClasseAbstrata implements IClasse {
 	protected int esforco;
 	protected int sanidade;
 	protected int quantidadePericias;
-	protected Pericia periciaTreinada1;
-	protected Pericia periciaTreinada2;
 	protected String proficienciaArmas;
 	protected String proficienciaProtecoes;
 	protected TrilhaAbstrata trilha;
 	protected Map<String,Poder> repoPoderesDaClasse;
+	protected Poder poderInicial;
+	/* eu tirei as perícias iniciais específicas de cada classe, quando a pessoa cria um personagem novo,
+	 * ela pode escolher quaisquer perícias, dentro do limite da classe do personagem
+	*/
 	
 	public ClasseAbstrata() {
 		
 	}
 
 	public ClasseAbstrata(int nex, int vida, int esforco, int sanidade, int quantidadePericias,
-			String proficienciaArmas, String proficienciaProtecoes, TrilhaAbstrata trilha,
-			Pericia periciaTreinada1, Pericia periciaTreinada2) {
+			String proficienciaArmas, String proficienciaProtecoes, TrilhaAbstrata trilha, Poder poderInicial) {
 		this.nex = nex;
 		this.vida = vida;
 		this.esforco = esforco;
@@ -35,8 +35,7 @@ public abstract class ClasseAbstrata implements IClasse {
 		this.proficienciaArmas = proficienciaArmas;
 		this.proficienciaProtecoes = proficienciaProtecoes;
 		this.trilha = trilha;
-		this.periciaTreinada1 = periciaTreinada1;
-		this.periciaTreinada2 = periciaTreinada2;
+		this.poderInicial = poderInicial;
 	}
 
 	public int getNex() {
@@ -143,6 +142,17 @@ public abstract class ClasseAbstrata implements IClasse {
 		// exceção dano negativo
     }
 
+	public Poder getPoderInicial() {
+		return this.poderInicial;
+	}
+
 	public abstract void subirDeNex(Atributos atributos);
+
+	/* esse método serve para quando houver um erro na progressão de nível do personagem
+	 * e precisar voltar ao nível anterior
+	 */
+	public abstract void corrigirNEX(Atributos atributos);
+
+	public abstract void increasePoderInicial();
 
 }

@@ -1,9 +1,9 @@
 package models.classes;
 
 import models.personagem.Atributos;
+import models.poderes.Poder;
 
 public interface IClasse {
-	void subirDeNex(Atributos atributos);
 	int getNex();
 	void curarVida(int cura);
 	void perderVida(int dano);
@@ -17,4 +17,8 @@ public interface IClasse {
 	int getQuantidadePericias();
 	String getProficienciaArmas();
 	String getProficienciaProtecoes();
+	Poder getPoderInicial();
+	void subirDeNex(Atributos atributos);
+	void corrigirNEX(Atributos atributos);
+	void increasePoderInicial();
 }
