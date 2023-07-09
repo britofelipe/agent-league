@@ -26,6 +26,15 @@ public class Personagem {
 	
 	private Map<String,Poder> repoPoderesPersonagem;
 
+	public Personagem() {
+
+	}
+	
+	public Personagem(int id, String jogador) {
+		this.id = id;
+		this.jogador = jogador;
+	}
+	
 	public Personagem(int id, String jogador, String nome, Atributos atributos, DescricaoPersonagem descricao, ClasseAbstrata classe,
 			OrigemAbstrata origem, Map<String, Pericia> periciasTreinadas, Equipamento equipamento) {
 		this.id = id;
