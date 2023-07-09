@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ListCellRenderer;
 
 import game.AgentLeague;
+import game.exception.PersonagemExistenteException;
 import grafics.dado.DadoFrame;
 import grafics.ficha.FichaPersonagem;
 import grafics.ficha.InformacaoBasica;
@@ -62,7 +63,11 @@ public class Administrador extends JFrame implements ActionListener {
 	        String nomeJogador = JOptionPane.showInputDialog(Administrador.this, "Digite o nome do jogador:");
 	        if (nomeJogador != null) {
 	            Personagem personagem = new Personagem(game.getNumeroPersonagens() + 1, nomeJogador);
-	            game.addPersonagem(personagem);
+	            try {
+	            	game.addPersonagem(personagem);
+	            } catch (PersonagemExistenteException pee) {
+	            	System.out.println(pee.getMessage());
+	            }
 	            listModel.addElement(personagem);
 	            FichaPersonagem fichaPersonagem = new FichaPersonagem(personagem);
 	        }

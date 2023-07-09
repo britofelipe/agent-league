@@ -2,6 +2,7 @@ package game;
 
 import java.util.Vector;
 
+import game.exception.*;
 import grafics.Administrador;
 import models.personagem.Personagem;
 
@@ -31,13 +32,22 @@ public class AgentLeague implements IAgentLeague {
 		return this.numeroPersonagens;
 	}
 	
-	public void addPersonagem(Personagem personagem) {
-		this.repoPersonagens.add(personagem);
-		numeroPersonagens++;
+	public void addPersonagem(Personagem personagem) throws PersonagemExistenteException {
+		if(personagem != null && !this.existe(personagem.getId())) {
+			this.repoPersonagens.add(personagem);
+			numeroPersonagens++;
+		} else {
+			throw new PersonagemExistenteException(personagem.getId());
+		}
+
 	}
 	
-	public void removePersonagem(int id) {
-		repoPersonagens.remove(procuraPersonagem(id));
+	public void removePersonagem(int id) throws PersonagemInexistenteException {
+		if(id >= 0 && this.existe(id)) {
+			repoPersonagens.remove(procuraPersonagem(id));
+		} else {
+			throw new PersonagemInexistenteException(id);
+		}
 	}
 
 	public Personagem procuraPersonagem(int id) {
@@ -47,6 +57,10 @@ public class AgentLeague implements IAgentLeague {
 			}
 		}
 		return null;
+	}
+	
+	public boolean existe(int id) {
+		return this.procuraPersonagem(id) != null;
 	}
 	
 }
