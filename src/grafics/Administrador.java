@@ -11,12 +11,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ListCellRenderer;
 
 import game.AgentLeague;
+import grafics.dado.DadoFrame;
 import grafics.ficha.FichaPersonagem;
 import grafics.ficha.InformacaoBasica;
 import models.personagem.Personagem;
 
 public class Administrador extends JFrame implements ActionListener {
     private JButton acrescentarButton;
+    private JButton rolagemDadosButton;
     private JList<Personagem> fichasList;
     private DefaultListModel<Personagem> listModel;
     private AgentLeague game;
@@ -31,6 +33,13 @@ public class Administrador extends JFrame implements ActionListener {
 
         acrescentarButton = new JButton("+ Acrescentar Ficha de Personagem");
         acrescentarButton.addActionListener(this);
+        
+        rolagemDadosButton = new JButton("Rolagem de dados");
+        rolagemDadosButton.addActionListener(this);
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(acrescentarButton);
+        buttonPanel.add(rolagemDadosButton);
 
         setLayout(new BorderLayout());
 
@@ -41,18 +50,24 @@ public class Administrador extends JFrame implements ActionListener {
 
         add(scrollPane, BorderLayout.CENTER);
         add(acrescentarButton, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
+
 
         setVisible(true);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String nomeJogador = JOptionPane.showInputDialog(Administrador.this, "Digite o nome do jogador:");
-        if (nomeJogador != null) {
-            Personagem personagem = new Personagem(game.getNumeroPersonagens() + 1, nomeJogador);
-            game.addPersonagem(personagem);
-            listModel.addElement(personagem);
-            FichaPersonagem fichaPersonagem = new FichaPersonagem(personagem);
+    	if (e.getSource() == acrescentarButton) {
+	        String nomeJogador = JOptionPane.showInputDialog(Administrador.this, "Digite o nome do jogador:");
+	        if (nomeJogador != null) {
+	            Personagem personagem = new Personagem(game.getNumeroPersonagens() + 1, nomeJogador);
+	            game.addPersonagem(personagem);
+	            listModel.addElement(personagem);
+	            FichaPersonagem fichaPersonagem = new FichaPersonagem(personagem);
+	        }
+        } else if (e.getSource() == rolagemDadosButton) {
+            DadoFrame dadoFrame = new DadoFrame();
         }
     }
     
