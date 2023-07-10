@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import models.equipamentos.exception.*;
+
 public class Equipamento {
 	private int pontosDePrestigio = 0;
 	private String patente = "Recruta";
@@ -32,24 +34,36 @@ public class Equipamento {
 		return this.pontosDePrestigio;
 	}
 
-	public void addPontosDePrestigio(int valor) {
+	public void addPontosDePrestigio(int valor) throws PrestigioNegativoException, ExcessoDeItensException {
 		if(valor > 0) {
 			this.pontosDePrestigio += valor;
 			atualizarPatente();
 			atualizarLimiteDeCredito();
-			atualizarLimiteDeItensPorCategoria();
+			try { 
+				atualizarLimiteDeItensPorCategoria();
+			} catch (ExcessoDeItensException eie) {
+				System.out.println(eie.getMessage());
+			}
 		}
-		// exceção de pontos de prestígio negativos
+		else {
+			throw new PrestigioNegativoException(valor);
+		}
 	}
 
-	public void subtractPontosDePrestigio(int valor) {
+	public void subtractPontosDePrestigio(int valor) throws PrestigioNegativoException, ExcessoDeItensException {
 		if(valor > 0) {
 			this.pontosDePrestigio = (this.pontosDePrestigio > valor) ? (this.pontosDePrestigio - valor) : (0);
 			atualizarPatente();
 			atualizarLimiteDeCredito();
-			atualizarLimiteDeItensPorCategoria();
+			try { 
+				atualizarLimiteDeItensPorCategoria();
+			} catch (ExcessoDeItensException eie) {
+				System.out.println(eie.getMessage());
+			}
 		}
-		// exceção de pontos de prestígio negativos
+		else {
+			throw new PrestigioNegativoException(valor);
+		}
 	}
 
 	public String getPatente(){
@@ -90,7 +104,7 @@ public class Equipamento {
 		return this.limiteDeItensPorCategoria;
 	}
 
-	private void atualizarLimiteDeItensPorCategoria() {
+	private void atualizarLimiteDeItensPorCategoria() throws ExcessoDeItensException {
 		if (this.pontosDePrestigio < 20) {
 			this.limiteDeItensPorCategoria[0] = 2;
 			this.limiteDeItensPorCategoria[1] = 0;
@@ -118,7 +132,7 @@ public class Equipamento {
 			this.limiteDeItensPorCategoria[3] = 2;
 		}
 		if(Arrays.equals(itensPorCategoria, limiteDeItensPorCategoria) == false) {
-			// exceção excesso de itens em uma ou mais categorias
+			throw new ExcessoDeItensException();
 		}
 	}
 
