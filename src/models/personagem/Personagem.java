@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import models.classes.ClasseAbstrata;
+import models.classes.exception.*;
 import models.equipamentos.Equipamento;
 import models.origens.OrigemAbstrata;
 import models.pericias.Pericia;
@@ -77,16 +78,34 @@ public class Personagem {
 	}
 
 	public void setJogador(String nome) {
-		this.nome = nome;
+	    try {
+	        if (nome == null) {
+	            throw new IllegalArgumentException("O nome do jogador não pode ser nulo.");
+	        }
+	        
+	        this.nome = nome;
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erro ao definir o nome do jogador: " + e.getMessage());
+	    }
 	}
+
 
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+	    try {
+	        if (nome == null) {
+	            throw new IllegalArgumentException("O nome não pode ser nulo.");
+	        }
+	        
+	        this.nome = nome;
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erro ao definir o nome: " + e.getMessage());
+	    }
 	}
+
 
 	public Atributos getAtributos() {
 		return this.atributos;
@@ -117,32 +136,64 @@ public class Personagem {
 	}
 
 	public void setId(int id) {
-		this.id = id;
+	    if (id < 0) {
+	        throw new IllegalArgumentException("O ID não pode ser um valor negativo.");
+	    }
+	    
+	    this.id = id;
 	}
+
 
 	public DescricaoPersonagem getDescricao() {
 		return descricao;
 	}
 
 	public void setDescricao(DescricaoPersonagem descricao) {
-		this.descricao = descricao;
+	    try {
+	        if (descricao == null) {
+	            throw new IllegalArgumentException("A descrição não pode ser nula.");
+	        }
+
+	        this.descricao = descricao;
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erro ao definir a descrição: " + e.getMessage());
+	    }
 	}
+
 
 	public ClasseAbstrata getClasse() {
 		return classe;
 	}
 
 	public void setClasse(ClasseAbstrata classe) {
-		this.classe = classe;
+	    try {
+	        if (classe == null) {
+	            throw new IllegalArgumentException("A classe não pode ser nula.");
+	        }
+
+	        this.classe = classe;
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erro ao definir a classe: " + e.getMessage());
+	    }
 	}
+
 
 	public OrigemAbstrata getOrigem() {
 		return this.origem;
 	}
 
 	public void setOrigem(OrigemAbstrata origem) {
-		this.origem = origem;
+	    try {
+	        if (origem == null) {
+	            throw new IllegalArgumentException("A origem não pode ser nula.");
+	        }
+
+	        this.origem = origem;
+	    } catch (IllegalArgumentException e) {
+	        System.err.println("Erro ao definir a origem: " + e.getMessage());
+	    }
 	}
+
 
 	public Map<String, Pericia> getPericiasTreinadas() {
 		return periciasTreinadas;
@@ -177,8 +228,12 @@ public class Personagem {
 	}
 
 	// implementação para quando o poder novo é da trilha ou o ataque especial da classe
-	public void subirDeNex() {
-		this.classe.subirDeNex(this.atributos);
+	public void subirDeNex() throws NexMinimoException {
+		try {
+			this.classe.subirDeNex(this.atributos);
+		} catch (NexMaximoException nme) {
+			System.out.println(nme.getMessage());
+		}
 		switch(this.classe.getNex()) {
 			case 10:
 				this.repoPoderesPersonagem.put(this.classe.getTrilha().getPoderNex10().getNome(), this.classe.getTrilha().getPoderNex10());
@@ -196,19 +251,32 @@ public class Personagem {
 				/* lembrar de usar um catch para a falha em elevar o poder inicial de classe e, caso ela seja recebida, chamar a
 				 * função de corrigir o NEX e lançar uma exceção de falha em subir de NEX no lugar
 				 */
-				this.classe.increasePoderInicial();
+				try{
+					this.classe.increasePoderInicial();
+				} catch (IncreasePoderException ipe){
+					System.out.println(ipe.getMessage());
+					this.classe.corrigirNEX(this.atributos);
+				}
 		}
 	}
 
 	// implementação para quando o poder novo é da classe
 	// para essa implementação, eu preciso que o jogador já tenha escolhido o poder novo, esse método só adiciona ele no repo do personagem
 	public void subirDeNex(Poder poderClasse) {
-		this.classe.subirDeNex(this.atributos);
+		try {
+			this.classe.subirDeNex(this.atributos);
+		} catch (NexMaximoException nme) {
+			System.out.println(nme.getMessage());
+		}
 		// todas as vezes em que o poder novo é da classe, o NEX alcançado é divisível por 15
 		if(this.classe.getNex() % 15 == 0) {
 			this.repoPoderesPersonagem.put(poderClasse.getNome(), poderClasse);
 		} else {
-			this.classe.corrigirNEX(this.atributos);
+			try {
+				this.classe.corrigirNEX(this.atributos);
+			} catch (NexMinimoException nme) {
+				System.out.println(nme.getMessage());
+			}
 			// exceção falha em subir de nível
 		}
 	}
@@ -216,7 +284,11 @@ public class Personagem {
 	// implementação para quando o poder novo é aumento de atributo
 	// para essa implementação, eu preciso que o jogador escolha o atributo a ser aumentado (inicialmente vou considerar que vou receber isso como um string)
 	public void subirDeNex(String atributo) {
-		this.classe.subirDeNex(this.atributos);
+		try {
+			this.classe.subirDeNex(this.atributos);
+		} catch (NexMaximoException nme) {
+			System.out.println(nme.getMessage());
+		}
 		if(this.classe.getNex() == 20 || this.classe.getNex() == 50 || this.classe.getNex() == 80 || this.classe.getNex() == 95) {
 			switch(atributo) {
 			/* lembrar de usar um catch para a exceção de atributo no máximo e, caso ela seja recebida, chamar a
@@ -238,11 +310,19 @@ public class Personagem {
 				this.atributos.addVigor();
 				break;
 			default:
-				this.classe.corrigirNEX(this.atributos);
+				try {
+					this.classe.corrigirNEX(this.atributos);
+				} catch (NexMinimoException nme) {
+					System.out.println(nme.getMessage());
+				}
 				// exceção falha em subir de nível
 			}
 		} else {
-			this.classe.corrigirNEX(this.atributos);
+			try {
+				this.classe.corrigirNEX(this.atributos);
+			} catch (NexMinimoException nme) {
+				System.out.println(nme.getMessage());
+			}
 			// exceção falha em subir de nível
 		}
 	}
@@ -250,7 +330,11 @@ public class Personagem {
 	// implementação para quando o poder novo é aumento de perícias
 	// para essa implementação, eu preciso que o jogador escolha as perícias que deseja aumentar o treino, o limite sendo 2 + intelecto do personagem (inicialmente vou considerar que vou receber isso como um vector de strings)
 	public void subirDeNex(Vector<String> pericias) {
-		this.classe.subirDeNex(this.atributos);
+		try {
+			this.classe.subirDeNex(this.atributos);
+		} catch (NexMaximoException nme) {
+			System.out.println(nme.getMessage());
+		}
 		if(this.classe.getNex() % 35 == 0) {
 			// testando se dá mesmo para aumentar o treino de todas as perícias escolhidas:
 			for(int i = 0; i < this.periciasTreinadas.size() - 1; i++) {
@@ -268,7 +352,11 @@ public class Personagem {
 				}
 			}
 		} else {
-			this.classe.corrigirNEX(this.atributos);
+			try {
+				this.classe.corrigirNEX(this.atributos);
+			} catch (NexMinimoException nme) {
+				System.out.println(nme.getMessage());
+			}
 			// exceção falha em subir de nível
 		}
 	}

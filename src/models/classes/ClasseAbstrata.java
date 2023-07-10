@@ -5,6 +5,7 @@ import java.util.Map;
 import models.personagem.*;
 import models.poderes.Poder;
 import models.trilhas.TrilhaAbstrata;
+import models.classes.exception.*;
 
 public abstract class ClasseAbstrata implements IClasse {
 	protected int nex;
@@ -17,9 +18,6 @@ public abstract class ClasseAbstrata implements IClasse {
 	protected TrilhaAbstrata trilha;
 	protected Map<String,Poder> repoPoderesDaClasse;
 	protected Poder poderInicial;
-	/* eu tirei as perícias iniciais específicas de cada classe, quando a pessoa cria um personagem novo,
-	 * ela pode escolher quaisquer perícias, dentro do limite da classe do personagem
-	*/
 	
 	public ClasseAbstrata() {
 		
@@ -106,53 +104,65 @@ public abstract class ClasseAbstrata implements IClasse {
 		return this.repoPoderesDaClasse;
 	}
 
-	public void curarVida(int cura) {
+	public void curarVida(int cura) throws CurarVidaException {
         if(cura >= 0)
 			this.vida += cura;
-		// exceção cura negativa
+        else {
+        	throw new CurarVidaException(cura);
+        }
     }
 
-    public void perderVida(int dano) {
+    public void perderVida(int dano) throws PerderVidaException {
         if(dano >= 0)
 			this.vida -= dano;
-		// exceção dano negativo
+        else {
+        	throw new PerderVidaException(dano);
+        }
     }
 
-    public void curarEsforco(int cura) {
+    public void curarEsforco(int cura) throws CurarEsforcoException {
         if(cura >= 0)
 			this.esforco += cura;
-		// exceção cura negativa
+        else {
+        	throw new CurarEsforcoException(cura);
+        }
     }
 
-    public void perderEsforco(int dano) {
+    public void perderEsforco(int dano) throws PerderEsforcoException {
         if(dano >= 0)
 			this.esforco -= dano;
-		// exceção dano negativo
+        else {
+        	throw new PerderEsforcoException(dano);
+        }
     }
 
-    public void curarSanidade(int cura) {
+    public void curarSanidade(int cura) throws CurarSanidadeException {
         if(cura >= 0)
 			this.sanidade += cura;
-		// exceção cura negativa
+        else {
+        	throw new CurarSanidadeException(cura);
+        }
     }
 
-    public void perderSanidade(int dano) {
+    public void perderSanidade(int dano) throws PerderSanidadeException {
         if(dano >= 0)
 			this.sanidade -= dano;
-		// exceção dano negativo
+        else {
+        	throw new PerderSanidadeException(dano);
+        }
     }
 
 	public Poder getPoderInicial() {
 		return this.poderInicial;
 	}
 
-	public abstract void subirDeNex(Atributos atributos);
+	public abstract void subirDeNex(Atributos atributos) throws NexMaximoException;
 
 	/* esse método serve para quando houver um erro na progressão de nível do personagem
 	 * e precisar voltar ao nível anterior
 	 */
-	public abstract void corrigirNEX(Atributos atributos);
+	public abstract void corrigirNEX(Atributos atributos) throws NexMinimoException;
 
-	public abstract void increasePoderInicial();
+	public abstract void increasePoderInicial() throws IncreasePoderException;
 
 }

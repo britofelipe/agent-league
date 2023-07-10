@@ -1,5 +1,6 @@
 package models.classes;
 
+import models.classes.exception.*;
 import models.personagem.Atributos;
 import models.poderes.Poder;
 import models.trilhas.TrilhaAbstrata;
@@ -25,9 +26,9 @@ public class Especialista extends ClasseAbstrata{
         // this.repoPoderesDaClasse = tem que carregar o arquivo com a lista de poderes da classe
     }
 
-    public void subirDeNex(Atributos atributos) {
+    public void subirDeNex(Atributos atributos) throws NexMaximoException {
         if(this.nex == 99) {
-            // exceção nível máximo alcançado
+        	throw new NexMaximoException(this.nex);
         } else {
             if(this.nex < 95)
                 this.nex += 5;
@@ -39,9 +40,9 @@ public class Especialista extends ClasseAbstrata{
         }
     }
 
-    public void corrigirNEX(Atributos atributos) {
+    public void corrigirNEX(Atributos atributos) throws NexMinimoException {
         if(this.nex == 5) {
-            // exceção nível mínimo alcançado
+        	throw new NexMinimoException(this.nex);
         } else {
             if(this.nex < 99)
                 this.nex -= 5;
@@ -53,7 +54,7 @@ public class Especialista extends ClasseAbstrata{
         }
     }
 
-    public void increasePoderInicial() {
+    public void increasePoderInicial() throws IncreasePoderException {
         switch(this.nex) {
             case 25:
                 this.poderInicial.setDescricao("Escolha duas perícias nas quais você é treinado (exceto Luta e Pontaria). Quando faz um teste de uma dessas perícias, você pode gastar 3 PE para somar +1d8 no resultado do teste. Lembrando que ainda é possível gastar apenas 2 PE para somar +1d6 no resultado do teste.");
@@ -65,7 +66,7 @@ public class Especialista extends ClasseAbstrata{
                 this.poderInicial.setDescricao("Escolha duas per\u00EDcias nas quais voc\u00EA \u00E9 treinado (exceto Luta e Pontaria). Quando faz um teste de uma dessas per\u00EDcias, voc\u00EA pode gastar 5 PE para somar +1d12 no resultado do teste. Lembrando que ainda \\u00E9 poss\\u00EDvel gastar apenas 2 PE para somar +1d6 ou gastar 3 PE para somar + 1d8 ou gastar 4 PE para somar +1d10 no resultado do teste.");
                 break;
             default:
-                // excessão de falha em elevar o poder inicial de classe
+            	throw new IncreasePoderException();
         }
     }
 

@@ -1,5 +1,6 @@
 package models.classes;
 
+import models.classes.exception.*;
 import models.personagem.Atributos;
 import models.trilhas.TrilhaAbstrata;
 import models.poderes.Poder;
@@ -24,9 +25,9 @@ public class Ocultista extends ClasseAbstrata {
         // this.repoPoderesDaClasse = tem que carregar o arquivo com a lista de poderes da classe
     }
 
-    public void subirDeNex(Atributos atributos) {
-        if(this.nex == 99) {
-            // exceção nível máximo alcançado
+    public void subirDeNex(Atributos atributos) throws NexMaximoException {
+    	if(this.nex == 99) {
+            throw new NexMaximoException(this.nex);
         } else {
             if(this.nex < 95)
                 this.nex += 5;
@@ -38,9 +39,9 @@ public class Ocultista extends ClasseAbstrata {
         }
     }
 
-    public void corrigirNEX(Atributos atributos) {
-        if(this.nex == 5) {
-            // exceção nível mínimo alcançado
+    public void corrigirNEX(Atributos atributos) throws NexMinimoException {
+    	if(this.nex == 5) {
+            throw new NexMinimoException(nex);
         } else {
             if(this.nex < 99)
                 this.nex -= 5;
@@ -52,7 +53,7 @@ public class Ocultista extends ClasseAbstrata {
         }
     }
 
-    public void increasePoderInicial() {
+    public void increasePoderInicial() throws IncreasePoderException {
         switch(this.nex) {
             case 25:
                 this.poderInicial.setDescricao("Você pode lançar rituais de 1º e 2º círculos.");
@@ -64,7 +65,7 @@ public class Ocultista extends ClasseAbstrata {
                 this.poderInicial.setDescricao("Voc\u00EA pode lan\u00E7ar rituais de 1\u00BA, 2\u00BA, 3\u00BA e 4\u00BA c\u00EDrculos.");
                 break;
             default:
-                // excessão de falha em elevar o poder inicial de classe
+            	throw new IncreasePoderException();
         }
     }
 

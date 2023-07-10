@@ -1,5 +1,8 @@
 package models.classes;
 
+import models.classes.exception.IncreasePoderException;
+import models.classes.exception.NexMaximoException;
+import models.classes.exception.NexMinimoException;
 import models.personagem.Atributos;
 import models.poderes.Poder;
 import models.trilhas.TrilhaAbstrata;
@@ -24,9 +27,9 @@ public class Combatente extends ClasseAbstrata{
         // this.repoPoderesDaClasse = tem que carregar o arquivo com a lista de poderes da classe
     }
 
-    public void subirDeNex(Atributos atributos) {
+    public void subirDeNex(Atributos atributos) throws NexMaximoException {
         if(this.nex == 99) {
-            // exceção nível máximo alcançado
+            throw new NexMaximoException(this.nex);
         } else {
             if(this.nex < 95)
                 this.nex += 5;
@@ -38,9 +41,9 @@ public class Combatente extends ClasseAbstrata{
         }
     }
 
-    public void corrigirNEX(Atributos atributos) {
+    public void corrigirNEX(Atributos atributos) throws NexMinimoException {
         if(this.nex == 5) {
-            // exceção nível mínimo alcançado
+            throw new NexMinimoException(nex);
         } else {
             if(this.nex < 99)
                 this.nex -= 5;
@@ -52,7 +55,7 @@ public class Combatente extends ClasseAbstrata{
         }
     }
 
-    public void increasePoderInicial() {
+    public void increasePoderInicial() throws IncreasePoderException {
         switch(this.nex) {
             case 25:
                 this.poderInicial.setDescricao("Quando faz um ataque, você pode gastar 2 PE para receber +5 no teste de ataque ou na rolagem de dano. Agora, você pode adicionar +1 no gasto de PE até 1 vez para conseguir uma quantidade de bônus +5 equivalente ao número adicional de PE gasto.");
@@ -64,7 +67,7 @@ public class Combatente extends ClasseAbstrata{
                 this.poderInicial.setDescricao("Quando faz um ataque, você pode gastar 2 PE para receber +5 no teste de ataque ou na rolagem de dano. Agora, você pode adicionar +1 no gasto de PE até 3 vezes para conseguir uma quantidade de bônus +5 equivalente ao número adicional de PE gasto.");
                 break;
             default:
-                // excessão de falha em elevar o poder inicial de classe
+            	throw new IncreasePoderException();
         }
     }
     
