@@ -1,7 +1,9 @@
 package models.pericias;
 
+import models.pericias.exception.TreinoMaximoException;
+
 public interface IPericia {
-	void aumentaTreino();
+	void aumentaTreino() throws TreinoMaximoException;
 	boolean dependeNivelTreino();
 	boolean dependeCarga();
 	boolean dependeKitUtensilios();

@@ -1,5 +1,7 @@
 package models.pericias;
 
+import models.pericias.exception.TreinoMaximoException;
+
 public class Pericia implements IPericia {
 	private String nome;
 	private String nivelTreino;
@@ -53,12 +55,14 @@ public class Pericia implements IPericia {
 		this.nivelAtributoBase = nivelAtributoBase;
 	}
 
-	public void aumentaTreino() {
+	public void aumentaTreino() throws TreinoMaximoException {
 		if(this.modificadorTreino < 20) {
 			this.nivelTreino = repoNivelTreino[this.modificadorTreino/5];
 			this.modificadorTreino += 5;
 		}
-		// excessão nível máximo já atingido
+		else {
+			throw new TreinoMaximoException();
+		}
 	}
 
 	public boolean dependeNivelTreino() {

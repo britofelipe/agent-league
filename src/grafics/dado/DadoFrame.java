@@ -12,7 +12,7 @@ public class DadoFrame extends JFrame {
     private JPanel panel;
 
     public DadoFrame() {
-        setTitle("DadoFrame");
+        setTitle("Rolagem de dados");
         setSize(400, 400);
         setLayout(new BorderLayout());
 

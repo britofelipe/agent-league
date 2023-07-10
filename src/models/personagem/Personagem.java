@@ -9,6 +9,7 @@ import models.classes.exception.*;
 import models.equipamentos.Equipamento;
 import models.origens.OrigemAbstrata;
 import models.pericias.Pericia;
+import models.pericias.exception.TreinoMaximoException;
 import models.poderes.*;
 
 public class Personagem {
@@ -329,7 +330,7 @@ public class Personagem {
 
 	// implementação para quando o poder novo é aumento de perícias
 	// para essa implementação, eu preciso que o jogador escolha as perícias que deseja aumentar o treino, o limite sendo 2 + intelecto do personagem (inicialmente vou considerar que vou receber isso como um vector de strings)
-	public void subirDeNex(Vector<String> pericias) {
+	public void subirDeNex(Vector<String> pericias) throws TreinoMaximoException {
 		try {
 			this.classe.subirDeNex(this.atributos);
 		} catch (NexMaximoException nme) {
@@ -348,7 +349,11 @@ public class Personagem {
 			// aumentando, de fato, os treinos
 			for(int i = 0; i < this.periciasTreinadas.size() - 1; i++) {
 				if(this.periciasTreinadas.containsKey(pericias.elementAt(i))) {
-					this.periciasTreinadas.get(pericias.elementAt(i)).aumentaTreino();
+					try {
+						this.periciasTreinadas.get(pericias.elementAt(i)).aumentaTreino();
+					} catch (TreinoMaximoException tme) {
+						System.out.println(tme.getMessage());
+					}
 				}
 			}
 		} else {
