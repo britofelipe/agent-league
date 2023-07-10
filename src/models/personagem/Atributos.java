@@ -1,5 +1,7 @@
 package models.personagem;
 
+import models.personagem.exception.*;
+
 public class Atributos {
 	private int agilidade;
 	private int forca;
@@ -27,11 +29,11 @@ public class Atributos {
 		this.agilidade = agilidade;
 	}
 
-	public void addAgilidade() {
+	public void addAgilidade() throws AgilidadeMaximaException {
 		if(this.agilidade < 5) {
 			this.agilidade++;
 		} else {
-			// atributo já no máximo
+			throw new AgilidadeMaximaException();
 		}
 	}
 
@@ -43,11 +45,11 @@ public class Atributos {
 		this.forca = forca;
 	}
 
-	public void addForca() {
+	public void addForca() throws ForcaMaximaException {
 		if(this.forca < 5) {
 			this.forca++;
 		} else {
-			// atributo já no máximo
+			throw new ForcaMaximaException();
 		}
 	}
 
@@ -59,11 +61,11 @@ public class Atributos {
 		this.intelecto = intelecto;
 	}
 
-	public void addIntelecto() {
+	public void addIntelecto() throws IntelectoMaximoException {
 		if(this.intelecto < 5) {
 			this.intelecto++;
 		} else {
-			// atributo já no máximo
+			throw new IntelectoMaximoException();
 		}
 	}
 
@@ -75,11 +77,11 @@ public class Atributos {
 		this.presenca = presenca;
 	}
 
-	public void addPresenca() {
+	public void addPresenca() throws PresencaMaximaException {
 		if(this.presenca < 5) {
 			this.presenca++;
 		} else {
-			// atributo já no máximo
+			throw new PresencaMaximaException();
 		}
 	}
 
@@ -91,11 +93,11 @@ public class Atributos {
 		this.vigor = vigor;
 	}
 
-	public void addVigor() {
+	public void addVigor() throws VigorMaximoException {
 		if(this.vigor < 5) {
 			this.vigor++;
 		} else {
-			// atributo já no máximo
+			throw new VigorMaximoException();
 		}
 	}
 	

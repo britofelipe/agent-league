@@ -10,6 +10,7 @@ import models.equipamentos.Equipamento;
 import models.origens.OrigemAbstrata;
 import models.pericias.Pericia;
 import models.pericias.exception.TreinoMaximoException;
+import models.personagem.exception.*;
 import models.poderes.*;
 
 public class Personagem {
@@ -38,7 +39,7 @@ public class Personagem {
 	}
 	
 	public Personagem(int id, String jogador, String nome, Atributos atributos, DescricaoPersonagem descricao, ClasseAbstrata classe,
-			OrigemAbstrata origem, Map<String, Pericia> periciasTreinadas, Equipamento equipamento) {
+			OrigemAbstrata origem, Map<String, Pericia> periciasTreinadas, Equipamento equipamento) throws PericiaOriginariaException {
 		this.id = id;
 		this.jogador = jogador;
 		this.nome = nome;
@@ -62,13 +63,13 @@ public class Personagem {
 		*/
 
 		if(this.periciasTreinadas.containsKey(this.origem.getPericiaTreinada1().getNome())) {
-			// exceção de que a pessoa selecionou entre as perícias extras, uma das que a origem já dá
+			throw new PericiaOriginariaException(this.origem.getPericiaTreinada1());
 		} else {
 			this.periciasTreinadas.put(this.origem.getPericiaTreinada1().getNome(), this.origem.getPericiaTreinada1());
 		}
 
 		if(this.periciasTreinadas.containsKey(this.origem.getPericiaTreinada2().getNome())) {
-			// exceção de que a pessoa selecionou entre as perícias extras, uma das que a origem já dá
+			throw new PericiaOriginariaException(this.origem.getPericiaTreinada2());
 		} else {
 			this.periciasTreinadas.put(this.origem.getPericiaTreinada2().getNome(), this.origem.getPericiaTreinada2());
 		}
@@ -140,7 +141,6 @@ public class Personagem {
 	    if (id < 0) {
 	        throw new IllegalArgumentException("O ID não pode ser um valor negativo.");
 	    }
-	    
 	    this.id = id;
 	}
 
@@ -249,9 +249,6 @@ public class Personagem {
 				this.repoPoderesPersonagem.put(this.classe.getTrilha().getPoderNex99().getNome(), this.classe.getTrilha().getPoderNex99());
 				break;
 			default:
-				/* lembrar de usar um catch para a falha em elevar o poder inicial de classe e, caso ela seja recebida, chamar a
-				 * função de corrigir o NEX e lançar uma exceção de falha em subir de NEX no lugar
-				 */
 				try{
 					this.classe.increasePoderInicial();
 				} catch (IncreasePoderException ipe){
@@ -263,7 +260,7 @@ public class Personagem {
 
 	// implementação para quando o poder novo é da classe
 	// para essa implementação, eu preciso que o jogador já tenha escolhido o poder novo, esse método só adiciona ele no repo do personagem
-	public void subirDeNex(Poder poderClasse) {
+	public void subirDeNex(Poder poderClasse) throws SubirDeNexException {
 		try {
 			this.classe.subirDeNex(this.atributos);
 		} catch (NexMaximoException nme) {
@@ -278,13 +275,13 @@ public class Personagem {
 			} catch (NexMinimoException nme) {
 				System.out.println(nme.getMessage());
 			}
-			// exceção falha em subir de nível
+			throw new SubirDeNexException("Poder da classe");
 		}
 	}
 
 	// implementação para quando o poder novo é aumento de atributo
 	// para essa implementação, eu preciso que o jogador escolha o atributo a ser aumentado (inicialmente vou considerar que vou receber isso como um string)
-	public void subirDeNex(String atributo) {
+	public void subirDeNex(String atributo) throws SubirDeNexException {
 		try {
 			this.classe.subirDeNex(this.atributos);
 		} catch (NexMaximoException nme) {
@@ -296,19 +293,39 @@ public class Personagem {
 			 * função de corrigir o NEX e lançar uma exceção de falha em subir de NEX no lugar
 			 */
 			case "Agilidade":
-				this.atributos.addAgilidade();
+				try{
+					this.atributos.addAgilidade();
+				} catch (AgilidadeMaximaException ame) {
+					System.out.println(ame.getMessage());
+				}
 				break;
 			case "Força":
-				this.atributos.addForca();
+				try{
+					this.atributos.addForca();
+				} catch (ForcaMaximaException fme) {
+					System.out.println(fme.getMessage());
+				}
 				break;
 			case "Intelecto":
-				this.atributos.addIntelecto();
+				try{
+					this.atributos.addIntelecto();
+				} catch (IntelectoMaximoException ime) {
+					System.out.println(ime.getMessage());
+				}
 				break;
 			case "Presença":
-				this.atributos.addPresenca();
+				try{
+					this.atributos.addPresenca();
+				} catch (PresencaMaximaException pme) {
+					System.out.println(pme.getMessage());
+				}
 				break;
 			case "Vigor":
-				this.atributos.addVigor();
+				try{
+					this.atributos.addVigor();
+				} catch (VigorMaximoException vme) {
+					System.out.println(vme.getMessage());
+				}
 				break;
 			default:
 				try {
@@ -316,7 +333,7 @@ public class Personagem {
 				} catch (NexMinimoException nme) {
 					System.out.println(nme.getMessage());
 				}
-				// exceção falha em subir de nível
+				throw new SubirDeNexException("Atributo");
 			}
 		} else {
 			try {
@@ -324,13 +341,13 @@ public class Personagem {
 			} catch (NexMinimoException nme) {
 				System.out.println(nme.getMessage());
 			}
-			// exceção falha em subir de nível
+			throw new SubirDeNexException("Atributo");
 		}
 	}
 
 	// implementação para quando o poder novo é aumento de perícias
 	// para essa implementação, eu preciso que o jogador escolha as perícias que deseja aumentar o treino, o limite sendo 2 + intelecto do personagem (inicialmente vou considerar que vou receber isso como um vector de strings)
-	public void subirDeNex(Vector<String> pericias) throws TreinoMaximoException {
+	public void subirDeNex(Vector<String> pericias) throws TreinoMaximoException, PericiaMaximoException, SubirDeNexException {
 		try {
 			this.classe.subirDeNex(this.atributos);
 		} catch (NexMaximoException nme) {
@@ -341,8 +358,7 @@ public class Personagem {
 			for(int i = 0; i < this.periciasTreinadas.size() - 1; i++) {
 				if(this.periciasTreinadas.containsKey(pericias.elementAt(i))) {
 					if(this.periciasTreinadas.get(pericias.elementAt(i)).getModificadorTreino() == 15) {
-						// exceção de que uma das perícias que se deseja aumentar já está no máximo
-						// solução: a pessoa tem que escolher de novo as que quer aumentar
+						throw new PericiaMaximoException(this.periciasTreinadas.get(pericias.elementAt(i)));
 					}
 				}
 			}
@@ -362,7 +378,7 @@ public class Personagem {
 			} catch (NexMinimoException nme) {
 				System.out.println(nme.getMessage());
 			}
-			// exceção falha em subir de nível
+			throw new SubirDeNexException("Perícias");
 		}
 	}
 
