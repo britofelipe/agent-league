@@ -10,6 +10,14 @@ public class Protecao {
     public Protecao() {
 
     }
+    
+    public Protecao(String nome, String descricao, int buffDefesa, int categoria, int espacosQueOcupa) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.buffDefesa = buffDefesa;
+        this.categoria = categoria;
+        this.espacosQueOcupa = espacosQueOcupa;
+    }
 
     public String getNome(){
         return this.nome;
