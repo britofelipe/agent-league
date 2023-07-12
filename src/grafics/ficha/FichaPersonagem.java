@@ -4,14 +4,8 @@ package grafics.ficha;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.event.*;
-
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 import java.awt.event.*;
 import java.util.HashMap;
@@ -32,6 +26,7 @@ import models.pericias.Pericia;
  */
 public class FichaPersonagem extends javax.swing.JFrame {
     private Personagem personagem;
+    private Map<String, Pericia> periciafinal = new HashMap<>();
     /**
      * Creates new form NewJFrame
      */
@@ -297,16 +292,14 @@ public class FichaPersonagem extends javax.swing.JFrame {
         setVisible(true);
 
         jTextField18.setText("1");
-        jTextField18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField18ActionPerformed(evt);
-            }
-        });
-
 
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(650, 380));
 
         jLabel27.setText("Perícias");
+        
+        if(personagem.getPericiasTreinadas() != null){
+            periciafinal = personagem.getPericiasTreinadas();
+        }
 
         jScrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -315,13 +308,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox1.getText(), (String) jComboBox3.getSelectedItem(), 0, personagem.getAgilidade(), false, true, false);
-                    if("Destreinado".equals((String) jComboBox3.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox1.getText())){
                         jComboBox3.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox1.getText(), (String) jComboBox3.getSelectedItem(), 5, personagem.getAgilidade(), false, true, false);                                                
+                        periciafinal.put(jCheckBox1.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox1.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -331,13 +323,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox2.getText(), (String) jComboBox4.getSelectedItem(), 0, personagem.getPresenca(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox4.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox2.getText())){
                         jComboBox4.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox2.getText(), (String) jComboBox4.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
+                        periciafinal.put(jCheckBox2.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox2.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+
                 }
             }
         });
@@ -347,13 +339,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox3.getText(), (String) jComboBox6.getSelectedItem(), 0, personagem.getPresenca(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox6.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox3.getText())){
                         jComboBox6.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox3.getText(), (String) jComboBox6.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
+                        periciafinal.put(jCheckBox3.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox3.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -363,13 +354,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox4.getText(), (String) jComboBox5.getSelectedItem(), 0, personagem.getForca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox5.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox4.getText())){
                         jComboBox5.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox4.getText(), (String) jComboBox5.getSelectedItem(), 5, personagem.getForca(), false, false, false);
+                        periciafinal.put(jCheckBox4.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox5.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -379,13 +369,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox5.getText(), (String) jComboBox10.getSelectedItem(), 0, personagem.getIntelecto(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox10.getSelectedItem())){
+                    System.out.println("Entrou em Atualidade");
+                    if(!periciafinal.containsKey(jCheckBox5.getText())){
                         jComboBox10.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox5.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox5.getText(), (String) jComboBox10.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
+                        periciafinal.put(jCheckBox5.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -395,13 +385,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox6.getText(), (String) jComboBox9.getSelectedItem(), 0, personagem.getIntelecto(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox10.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox6.getText())){
                         jComboBox9.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox6.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox6.getText(), (String) jComboBox9.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
+                        periciafinal.put(jCheckBox6.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -411,13 +400,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox7.getText(), (String) jComboBox8.getSelectedItem(), 0, personagem.getAgilidade(), false, true, true);
-                    if("Destreinado".equals((String) jComboBox8.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox7.getText())){
                         jComboBox8.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox7.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox7.getText(), (String) jComboBox8.getSelectedItem(), 5, personagem.getAgilidade(), false, true, true);
+                        periciafinal.put(jCheckBox7.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);    
+                    }                    
                 }
             }
         });
@@ -427,13 +415,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox8.getText(), (String) jComboBox7.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox7.getSelectedItem())){
-                        jComboBox8.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox8.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    if(!periciafinal.containsKey(jCheckBox8.getText())){
+                        jComboBox7.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox8.getText(), (String) jComboBox7.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox8.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -443,13 +430,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox9.getText(), (String) jComboBox11.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox11.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox9.getText())){
                         jComboBox11.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox9.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox9.getText(), (String) jComboBox11.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox9.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -459,13 +445,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox10.getText(), (String) jComboBox12.getSelectedItem(), 0, personagem.getVigor(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox12.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox10.getText())){
                         jComboBox12.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox10.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox10.getText(), (String) jComboBox12.getSelectedItem(), 5, personagem.getVigor(), false, false, false);
+                        periciafinal.put(jCheckBox10.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -475,13 +460,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox11.getText(), (String) jComboBox13.getSelectedItem(), 0, personagem.getAgilidade(), false, true, false);
-                    if("Destreinado".equals((String) jComboBox13.getSelectedItem())){
-                        jComboBox13.setSelectedIndex(1);
+                    if(!periciafinal.containsKey(jCheckBox11.getText())){ 
+                        jComboBox13.setSelectedIndex(1);                     
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox11.getText(), (String) jComboBox13.getSelectedItem(), 5, personagem.getAgilidade(), false, true, false);
+                        periciafinal.put(jCheckBox11.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox11.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -491,13 +475,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox12.getText(), (String) jComboBox14.getSelectedItem(), 0, personagem.getAgilidade(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox14.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox12.getText())){
                         jComboBox14.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox12.getText(), (String) jComboBox14.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
+                        periciafinal.put(jCheckBox12.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox12.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -507,13 +491,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox13.getText(), (String) jComboBox15.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox15.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox13.getText())){
                         jComboBox15.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox13.getText(), (String) jComboBox15.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox13.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox13.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -523,13 +506,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox14.getText(), (String) jComboBox16.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox16.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox14.getText())){
                         jComboBox16.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox14.getText(), (String) jComboBox16.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox14.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox13.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -539,13 +522,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox15.getText(), (String) jComboBox17.getSelectedItem(), 0, personagem.getIntelecto(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox17.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox15.getText())){
                         jComboBox17.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox15.getText(), (String) jComboBox17.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
+                        periciafinal.put(jCheckBox15.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox15.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -555,13 +537,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox15.getText(), (String) jComboBox18.getSelectedItem(), 0, personagem.getForca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox18.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox16.getText())){
                         jComboBox18.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox15.getText(), (String) jComboBox18.getSelectedItem(), 5, personagem.getForca(), false, false, false);
+                        periciafinal.put(jCheckBox16.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox16.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -571,13 +553,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox17.getText(), (String) jComboBox19.getSelectedItem(), 0, personagem.getIntelecto(), false, false, true);
-                    if("Destreinado".equals((String) jComboBox19.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox17.getText())){
                         jComboBox19.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox17.getText(), (String) jComboBox19.getSelectedItem(), 5, personagem.getIntelecto(), false, false, true);
+                        periciafinal.put(jCheckBox17.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox17.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -587,13 +569,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox18.getText(), (String) jComboBox20.getSelectedItem(), 0, personagem.getIntelecto(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox19.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox18.getText())){
                         jComboBox20.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox18.getText(), (String) jComboBox20.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
+                        periciafinal.put(jCheckBox18.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox18.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -603,13 +585,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox19.getText(), (String) jComboBox21.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox21.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox19.getText())){
                         jComboBox21.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox19.getText(), (String) jComboBox21.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox19.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox19.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -619,13 +601,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox20.getText(), (String) jComboBox22.getSelectedItem(), 0, personagem.getAgilidade(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox22.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox20.getText())){
                         jComboBox22.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox20.getText(), (String) jComboBox22.getSelectedItem(), 5, personagem.getAgilidade(), true, false, false);
+                        periciafinal.put(jCheckBox20.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox20.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -635,13 +617,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox21.getText(), (String) jComboBox23.getSelectedItem(), 0, personagem.getAgilidade(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox23.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox21.getText())){
                         jComboBox23.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox21.getText(), (String) jComboBox23.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
+                        periciafinal.put(jCheckBox21.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox21.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -651,13 +633,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox22.getText(), (String) jComboBox24.getSelectedItem(), 0, personagem.getIntelecto(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox24.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox22.getText())){
                         jComboBox24.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox22.getText(), (String) jComboBox24.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
+                        periciafinal.put(jCheckBox22.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox22.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
@@ -667,13 +648,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox23.getText(), (String) jComboBox25.getSelectedItem(), 0, personagem.getAgilidade(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox25.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox23.getText())){
                         jComboBox25.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox23.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox23.getText(), (String) jComboBox25.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
+                        periciafinal.put(jCheckBox23.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -683,13 +663,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox24.getText(), (String) jComboBox26.getSelectedItem(), 0, personagem.getPresenca(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox26.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox24.getText())){
                         jComboBox26.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox24.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox24.getText(), (String) jComboBox26.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
+                        periciafinal.put(jCheckBox24.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -699,13 +678,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox25.getText(), (String) jComboBox27.getSelectedItem(), 0, personagem.getIntelecto(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox27.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox25.getText())){
                         jComboBox27.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox25.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox25.getText(), (String) jComboBox27.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
+                        periciafinal.put(jCheckBox25.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -715,13 +693,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox26.getText(), (String) jComboBox28.getSelectedItem(), 0, personagem.getIntelecto(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox28.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox26.getText())){
                         jComboBox28.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox26.getText(), (String) jComboBox28.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
+                        periciafinal.put(jCheckBox26.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox26.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                    
                 }
             }
         });
@@ -731,13 +709,12 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox27.getText(), (String) jComboBox29.getSelectedItem(), 0, personagem.getIntelecto(), true, false, false);
-                    if("Destreinado".equals((String) jComboBox29.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox27.getText())){
                         jComboBox29.setSelectedIndex(1);
-                    }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox27.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox27.getText(), (String) jComboBox29.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
+                        periciafinal.put(jCheckBox27.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
+                    }                    
                 }
             }
         });
@@ -747,65 +724,36 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    Pericia periciaadd = new Pericia(jCheckBox28.getText(), (String) jComboBox30.getSelectedItem(), 0, personagem.getPresenca(), false, false, false);
-                    if("Destreinado".equals((String) jComboBox30.getSelectedItem())){
+                    if(!periciafinal.containsKey(jCheckBox28.getText())){
                         jComboBox30.setSelectedIndex(1);
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox28.getText(), (String) jComboBox30.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
+                        periciafinal.put(jCheckBox28.getText(), periciaParaAdicionar);
+                        personagem.setPericiasTreinadas(periciafinal);
                     }
-                    Map<String, Pericia> periciafinal = new HashMap<>();
-                    periciafinal.put(jCheckBox28.getText(), periciaadd);
-                    personagem.setPericiasTreinadas(periciafinal);
                 }
             }
         });
 
         jTextField13.setText("1");
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField14.setText("1");
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField15.setText("1");
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField16.setText("1");
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField17.setText("1");
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField19.setText("1");
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField20.setText("1");
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField21.setText("1");
 
@@ -818,53 +766,24 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextField30.setText("1");
 
         jTextField31.setText("1");
-        jTextField31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField31ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField32.setText("1");
-        jTextField32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField32ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField33.setText("1");
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField34.setText("1");
-        jTextField34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField34ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField35.setText("1");
-        jTextField35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField35ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField36.setText("1");
-        jTextField36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField36ActionPerformed(evt);
-            }
-        });
+        
 
         jTextField37.setText("1");
-        jTextField37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField37ActionPerformed(evt);
-            }
-        });
 
         jTextField38.setText("1");
 
@@ -889,55 +808,26 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
-            }
-        });
 
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox14ActionPerformed(evt);
-            }
-        });
-
+        
         jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox16ActionPerformed(evt);
-            }
-        });
-
+        
         jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox17ActionPerformed(evt);
-            }
-        });
+        
 
         jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox18ActionPerformed(evt);
-            }
-        });
 
         jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-        jComboBox20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox20ActionPerformed(evt);
-            }
-        });
-
+        
         jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
@@ -959,54 +849,19 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jComboBox30.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jTextField46.setText("1");
-        jTextField46.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField46ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField47.setText("1");
-        jTextField47.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField48.setText("1");
-        jTextField48.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField48ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField49.setText("1");
-        jTextField49.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField50.setText("1");
-        jTextField50.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField51.setText("1");
-        jTextField51.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField51ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField52.setText("1");
-        jTextField52.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField52ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField53.setText("1");
 
         jTextField54.setText("1");
@@ -1028,56 +883,21 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextField62.setText("1");
 
         jTextField63.setText("1");
-        jTextField63.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField63ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField64.setText("1");
-        jTextField64.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField64ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField65.setText("1");
-        jTextField65.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField65ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField66.setText("1");
-        jTextField66.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField66ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField67.setText("1");
-        jTextField67.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField67ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField68.setText("1");
-        jTextField68.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField68ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField69.setText("1");
 
         jTextField25.setText("1");
-        jTextField25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField25ActionPerformed(evt);
-            }
-        });
-
+        
         jTextField26.setText("1");
 
         jTextField27.setText("1");
@@ -1459,12 +1279,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextField42.getDocument().addDocumentListener(new PegaMudancaJogadorDocumentListener());
 
         jLabel33.setText("Origem:");
-
-        jTextField43.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField43ActionPerformed(evt);
-            }
-        });
 
         jLabel51.setText("Classe:");
 
@@ -2249,24 +2063,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
 
         jLabel28.setText("Nome do Poder:");
 
-        jTextFieldNomePoder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomePoderActionPerformed(evt);
-            }
-        });
-
         jLabel24.setText("Descrição:");
 
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
         jScrollPane10.setViewportView(jTextAreaDescricao);
-
-        jButtonAdicionarPoder.setText("Adicionar Poder");
-        jButtonAdicionarPoder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdicionarPoderActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -2312,11 +2113,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
 
         jLabel25.setText("Nome do Poder:");
 
-        jTextFieldNomePodertxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomePodertxtActionPerformed(evt);
-            }
-        });
 
         jLabel26.setText("Descrição:");
 
@@ -2434,6 +2230,150 @@ public class FichaPersonagem extends javax.swing.JFrame {
             jTextField77.setText(String.valueOf(personagem.getIntelecto()));
             jTextField78.setText(String.valueOf(personagem.getVigor()));
             jTextField79.setText(String.valueOf(personagem.getPresenca()));
+
+            // Preenchendo Pericias em Ficha do Agente
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox1.getText())){
+                jCheckBox1.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox1.getText()).getNivelTreino();
+                jComboBox3.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox2.getText())){
+                jCheckBox2.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox2.getText()).getNivelTreino();
+                jComboBox4.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox3.getText())){
+                jCheckBox3.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox3.getText()).getNivelTreino();
+                jComboBox6.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox4.getText())){
+                jCheckBox4.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox4.getText()).getNivelTreino();
+                jComboBox5.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox5.getText())){
+                jCheckBox5.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox5.getText()).getNivelTreino();
+                jComboBox10.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox6.getText())){
+                jCheckBox6.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox6.getText()).getNivelTreino();
+                jComboBox9.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox7.getText())){
+                jCheckBox7.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox7.getText()).getNivelTreino();
+                jComboBox8.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox8.getText())){
+                jCheckBox8.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox8.getText()).getNivelTreino();
+                jComboBox7.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox9.getText())){
+                jCheckBox9.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox9.getText()).getNivelTreino();
+                jComboBox11.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox10.getText())){
+                jCheckBox10.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox10.getText()).getNivelTreino();
+                jComboBox12.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox11.getText())){
+                jCheckBox11.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox11.getText()).getNivelTreino();
+                jComboBox13.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox12.getText())){
+                jCheckBox12.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox12.getText()).getNivelTreino();
+                jComboBox14.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox13.getText())){
+                jCheckBox13.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox13.getText()).getNivelTreino();
+                jComboBox15.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox14.getText())){
+                jCheckBox14.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox14.getText()).getNivelTreino();
+                jComboBox16.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox15.getText())){
+                jCheckBox15.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox15.getText()).getNivelTreino();
+                jComboBox17.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox16.getText())){
+                jCheckBox16.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox16.getText()).getNivelTreino();
+                jComboBox18.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox17.getText())){
+                jCheckBox17.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox17.getText()).getNivelTreino();
+                jComboBox19.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox18.getText())){
+                jCheckBox18.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox18.getText()).getNivelTreino();
+                jComboBox20.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox19.getText())){
+                jCheckBox19.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox19.getText()).getNivelTreino();
+                jComboBox21.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox20.getText())){
+                jCheckBox20.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox20.getText()).getNivelTreino();
+                jComboBox22.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox21.getText())){
+                jCheckBox21.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox21.getText()).getNivelTreino();
+                jComboBox23.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox22.getText())){
+                jCheckBox22.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox22.getText()).getNivelTreino();
+                jComboBox24.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox23.getText())){
+                jCheckBox23.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox23.getText()).getNivelTreino();
+                jComboBox25.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox24.getText())){
+                jCheckBox24.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox24.getText()).getNivelTreino();
+                jComboBox26.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox25.getText())){
+                jCheckBox25.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox25.getText()).getNivelTreino();
+                jComboBox27.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox26.getText())){
+                jCheckBox26.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox26.getText()).getNivelTreino();
+                jComboBox28.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox27.getText())){
+                jCheckBox27.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox27.getText()).getNivelTreino();
+                jComboBox29.setSelectedItem(niveldaPericia);
+            }
+            if(personagem.getPericiasTreinadas().containsKey(jCheckBox28.getText())){
+                jCheckBox28.setSelected(true);
+                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox28.getText()).getNivelTreino();
+                jComboBox30.setSelectedItem(niveldaPericia);
+            }
+            
+            
 
             // Preenchendo Descricao do Personagem
             if(personagem.getDescricao() != null){
@@ -3080,170 +3020,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
         personagem.setJogador(texto);
     }
     }
-
-    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField18ActionPerformed
-
-    private void jTextFieldNomePodertxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomePodertxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomePodertxtActionPerformed
-
-    private void jTextFieldNomePoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomePoderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomePoderActionPerformed
-
-    private void jTextField43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField43ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField43ActionPerformed
-
-    private void jTextField42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField42ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField42ActionPerformed
-
-    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField25ActionPerformed
-
-    private void jTextField68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField68ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField68ActionPerformed
-
-    private void jTextField67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField67ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField67ActionPerformed
-
-    private void jTextField66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField66ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField66ActionPerformed
-
-    private void jTextField65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField65ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField65ActionPerformed
-
-    private void jTextField64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField64ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField64ActionPerformed
-
-    private void jTextField63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField63ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField63ActionPerformed
-
-    private void jTextField52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField52ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField52ActionPerformed
-
-    private void jTextField51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField51ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField51ActionPerformed
-
-    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField50ActionPerformed
-
-    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField49ActionPerformed
-
-    private void jTextField48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField48ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField48ActionPerformed
-
-    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47ActionPerformed
-
-    private void jTextField46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField46ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField46ActionPerformed
-
-    private void jComboBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox20ActionPerformed
-
-    private void jComboBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox18ActionPerformed
-
-    private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox17ActionPerformed
-
-    private void jComboBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox16ActionPerformed
-
-    private void jComboBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox14ActionPerformed
-
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
-
-    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField37ActionPerformed
-
-    private void jTextField36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField36ActionPerformed
-
-    private void jTextField35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField35ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField35ActionPerformed
-
-    private void jTextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField34ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField34ActionPerformed
-
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
-
-    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField32ActionPerformed
-
-    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField31ActionPerformed
-
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
-
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
-
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
-
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
-
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
-
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
-
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jButtonAdicionarPoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarPoderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAdicionarPoderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

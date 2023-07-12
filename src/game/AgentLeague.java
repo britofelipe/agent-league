@@ -3,7 +3,6 @@ package game;
 import java.util.Vector;
 
 import game.exception.*;
-import grafics.Administrador;
 import models.personagem.Personagem;
 
 public class AgentLeague implements IAgentLeague {

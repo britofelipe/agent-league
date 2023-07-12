@@ -10,10 +10,8 @@ import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ListCellRenderer;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -21,7 +19,6 @@ import game.AgentLeague;
 import game.exception.PersonagemExistenteException;
 import grafics.dado.DadoFrame;
 import grafics.ficha.FichaPersonagem;
-import grafics.ficha.InformacaoBasica;
 import models.personagem.Personagem;
 import perpetuo.*;
 
