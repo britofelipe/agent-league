@@ -1,6 +1,8 @@
 package models.personagem.exception;
 
-public class VigorMaximoException extends Exception {
+import java.io.Serializable;
+
+public class VigorMaximoException extends Exception implements Serializable{
 	public VigorMaximoException() {
 		super("Capacidade máxima do tributo já atingida!");
 	}

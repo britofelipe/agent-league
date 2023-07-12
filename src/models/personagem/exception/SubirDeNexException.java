@@ -1,6 +1,8 @@
 package models.personagem.exception;
 
-public class SubirDeNexException extends Exception {
+import java.io.Serializable;
+
+public class SubirDeNexException extends Exception implements Serializable {
 	String motivo;
 	
 	public SubirDeNexException(String motivo) {

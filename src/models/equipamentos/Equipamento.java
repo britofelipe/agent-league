@@ -1,12 +1,13 @@
 package models.equipamentos;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import models.equipamentos.exception.*;
 
-public class Equipamento {
+public class Equipamento implements Serializable{
 	private int pontosDePrestigio = 0;
 	private String patente = "Recruta";
 	private String limiteDeCredito = "Baixo";

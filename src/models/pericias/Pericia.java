@@ -1,8 +1,10 @@
 package models.pericias;
 
+import java.io.Serializable;
+
 import models.pericias.exception.TreinoMaximoException;
 
-public class Pericia implements IPericia {
+public class Pericia implements IPericia, Serializable {
 	private String nome;
 	private String nivelTreino;
 	private String[] repoNivelTreino = {"Destreinado", "Treinado", "Veterano", "Expert"};

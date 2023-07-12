@@ -1,9 +1,11 @@
 package models.origens;
 
+import java.io.Serializable;
+
 import models.pericias.Pericia;
 import models.poderes.Poder;
 
-public abstract class OrigemAbstrata implements IOrigem {
+public abstract class OrigemAbstrata implements IOrigem, Serializable{
 	protected String nome;
 	protected Pericia periciaTreinada1;
 	protected Pericia periciaTreinada2;

@@ -1,5 +1,6 @@
 package models.personagem;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -13,11 +14,11 @@ import models.pericias.exception.TreinoMaximoException;
 import models.personagem.exception.*;
 import models.poderes.*;
 
-public class Personagem {
+public class Personagem implements Serializable{
 	private int id;
 	private String jogador;
 	private String nome;
-	private Atributos atributos;
+	private Atributos atributos = new Atributos();
 
 	private ClasseAbstrata classe;
 	private OrigemAbstrata origem;

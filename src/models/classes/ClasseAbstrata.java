@@ -1,5 +1,6 @@
 package models.classes;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import models.personagem.*;
@@ -7,7 +8,7 @@ import models.poderes.Poder;
 import models.trilhas.TrilhaAbstrata;
 import models.classes.exception.*;
 
-public abstract class ClasseAbstrata implements IClasse {
+public abstract class ClasseAbstrata implements IClasse, Serializable {
 	protected int nex;
 	protected int vida;
 	protected int esforco;

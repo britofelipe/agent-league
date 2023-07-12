@@ -1,8 +1,10 @@
 package models.personagem;
 
+import java.io.Serializable;
+
 import models.personagem.exception.*;
 
-public class Atributos {
+public class Atributos implements Serializable {
 	private int agilidade;
 	private int forca;
 	private int intelecto;
