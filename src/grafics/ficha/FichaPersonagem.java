@@ -1561,30 +1561,34 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel38.setText("Força:");
-
         jTextField75.getDocument().addDocumentListener(new PegaMudancaForcaDocumentListener());
-        jTextField75.setText("1");
-
+        if(personagem.getAtributos() == null){
+            jTextField75.setText("1");
+        }
 
         jLabel39.setText("Agilidade:");
-
         jTextField76.getDocument().addDocumentListener(new PegaMudancaAgilidadeDocumentListener());
-        jTextField76.setText("1");
+        if(personagem.getAtributos() == null){
+            jTextField76.setText("1");
+        }
 
         jLabel40.setText("Inteligência:");
-
         jTextField77.getDocument().addDocumentListener(new PegaMudancaIntelectoDocumentListener());
-        jTextField77.setText("1");
+        if(personagem.getAtributos() == null){
+            jTextField77.setText("1");
+        }
 
         jLabel41.setText("Vigor:");
+        jTextField78.getDocument().addDocumentListener(new PegaMudancaVigorDocumentListener());
+        if(personagem.getAtributos() == null){
+            jTextField78.setText("1");
+        }
 
         jLabel42.setText("Presença:");
-
-        jTextField78.getDocument().addDocumentListener(new PegaMudancaVigorDocumentListener());
-        jTextField78.setText("1");
-
         jTextField79.getDocument().addDocumentListener(new PegaMudancaPresencaDocumentListener());
-        jTextField79.setText("1");
+        if(personagem.getAtributos() == null){
+            jTextField79.setText("1");
+        }
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -2144,9 +2148,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Descrição em texto\nda aparência...");
         jTextArea2.setToolTipText("");
         jTextArea2.getDocument().addDocumentListener(new PegaMudancaAparenciaDocumentListener());
+        if(personagem.getDescricao() == null){
+            jTextArea2.setText("Descrição em texto\nda aparência...");
+        }
         jScrollPane5.setViewportView(jTextArea2);
 
         jTextArea4.setColumns(20);
@@ -2417,6 +2423,30 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        if(personagem.getNome() != null){
+            System.out.println("Passou");
+            jTextField41.setText(personagem.getNome());
+            jTextField42.setText(personagem.getJogador());
+
+            // Preenchendo Atributos em Ficha do Agente
+            jTextField75.setText(String.valueOf(personagem.getForca()));
+            jTextField76.setText(String.valueOf(personagem.getAgilidade()));
+            jTextField77.setText(String.valueOf(personagem.getIntelecto()));
+            jTextField78.setText(String.valueOf(personagem.getVigor()));
+            jTextField79.setText(String.valueOf(personagem.getPresenca()));
+
+            // Preenchendo Descricao do Personagem
+            if(personagem.getDescricao() != null){
+                jTextArea2.setText(personagem.getDescricao().getAparencia());
+                jTextArea4.setText(personagem.getDescricao().getObjetivo());
+                jTextArea1.setText(personagem.getDescricao().getHistorico());
+                jTextField94.setText(personagem.getDescricao().getGenero());
+                int idade = personagem.getDescricao().getIdade();
+                jTextField95.setText(String.valueOf(idade));
+            }
+            
+        } 
+        
 
         jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
@@ -2697,7 +2727,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setForca(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2712,7 +2748,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setForca(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2727,7 +2769,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setForca(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2745,7 +2793,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setAgilidade(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2760,7 +2814,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setAgilidade(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2775,7 +2835,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setAgilidade(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2793,7 +2859,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setIntelecto(valor);
         } catch (NumberFormatException ex){
             ex.printStackTrace();
@@ -2808,7 +2880,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setIntelecto(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2823,7 +2901,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         try{
-            int valor = Integer.parseInt(texto);
+            int valor;
+            if(texto.isEmpty()){
+                valor = 0;
+            }
+            else{
+                valor = Integer.parseInt(texto);
+            }
             personagem.getAtributos().setIntelecto(valor);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2841,7 +2925,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setPresenca(valor);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2856,10 +2946,16 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setPresenca(valor);
             } catch (NumberFormatException ex){
-                    ex.printStackTrace();
+                ex.printStackTrace();
             }
         }
 
@@ -2871,10 +2967,16 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setPresenca(valor);
             } catch (NumberFormatException ex){
-                    ex.printStackTrace();
+                ex.printStackTrace();
             }
         }
     }
@@ -2889,7 +2991,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setVigor(valor);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
@@ -2904,7 +3012,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setVigor(valor);
             } catch (NumberFormatException ex){
                     ex.printStackTrace();
@@ -2919,7 +3033,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
             try{
-                int valor = Integer.parseInt(texto);
+                int valor;
+                if(texto.isEmpty()){
+                    valor = 0;
+                }
+                else{
+                    valor = Integer.parseInt(texto);
+                }
                 personagem.getAtributos().setVigor(valor);
             } catch (NumberFormatException ex){
                     ex.printStackTrace();

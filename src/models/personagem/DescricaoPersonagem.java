@@ -1,6 +1,8 @@
 package models.personagem;
 
-public class DescricaoPersonagem {
+import java.io.Serializable;
+
+public class DescricaoPersonagem implements Serializable {
 	private String genero;
 	private int idade;
 	private String aparencia;
