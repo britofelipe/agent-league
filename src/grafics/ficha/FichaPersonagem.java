@@ -734,63 +734,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
             }
         });
 
-        jTextField13.setText("1");
-        
-
-        jTextField14.setText("1");
-        
-
-        jTextField15.setText("1");
-        
-
-        jTextField16.setText("1");
-        
-
-        jTextField17.setText("1");
-        
-
-        jTextField19.setText("1");
-        
-
-        jTextField20.setText("1");
-        
-
-        jTextField21.setText("1");
-
-        jTextField22.setText("1");
-
-        jTextField23.setText("1");
-
-        jTextField24.setText("1");
-
-        jTextField30.setText("1");
-
-        jTextField31.setText("1");
-        
-
-        jTextField32.setText("1");
-        
-
-        jTextField33.setText("1");
-        
-
-        jTextField34.setText("1");
-        
-
-        jTextField35.setText("1");
-        
-
-        jTextField36.setText("1");
-        
-
-        jTextField37.setText("1");
-
-        jTextField38.setText("1");
-
-        jTextField39.setText("1");
-
-        jTextField40.setText("1");
-
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
@@ -893,18 +836,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextField67.setText("1");
         
         jTextField68.setText("1");
-        
-        jTextField69.setText("1");
-
-        jTextField25.setText("1");
-        
-        jTextField26.setText("1");
-
-        jTextField27.setText("1");
-
-        jTextField28.setText("1");
-
-        jTextField29.setText("1");
 
         jTextField70.setText("1");
 
@@ -2220,7 +2151,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 .addContainerGap())
         );
         if(personagem.getNome() != null){
-            System.out.println("Passou");
             jTextField41.setText(personagem.getNome());
             jTextField42.setText(personagem.getJogador());
 
@@ -2232,148 +2162,148 @@ public class FichaPersonagem extends javax.swing.JFrame {
             jTextField79.setText(String.valueOf(personagem.getPresenca()));
 
             // Preenchendo Pericias em Ficha do Agente
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox1.getText())){
-                jCheckBox1.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox1.getText()).getNivelTreino();
-                jComboBox3.setSelectedItem(niveldaPericia);
+            if(personagem.getPericiasTreinadas() != null){
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox1.getText())){
+                    jCheckBox1.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox1.getText()).getNivelTreino();
+                    jComboBox3.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox2.getText())){
+                    jCheckBox2.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox2.getText()).getNivelTreino();
+                    jComboBox4.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox3.getText())){
+                    jCheckBox3.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox3.getText()).getNivelTreino();
+                    jComboBox6.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox4.getText())){
+                    jCheckBox4.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox4.getText()).getNivelTreino();
+                    jComboBox5.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox5.getText())){
+                    jCheckBox5.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox5.getText()).getNivelTreino();
+                    jComboBox10.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox6.getText())){
+                    jCheckBox6.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox6.getText()).getNivelTreino();
+                    jComboBox9.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox7.getText())){
+                    jCheckBox7.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox7.getText()).getNivelTreino();
+                    jComboBox8.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox8.getText())){
+                    jCheckBox8.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox8.getText()).getNivelTreino();
+                    jComboBox7.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox9.getText())){
+                    jCheckBox9.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox9.getText()).getNivelTreino();
+                    jComboBox11.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox10.getText())){
+                    jCheckBox10.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox10.getText()).getNivelTreino();
+                    jComboBox12.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox11.getText())){
+                    jCheckBox11.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox11.getText()).getNivelTreino();
+                    jComboBox13.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox12.getText())){
+                    jCheckBox12.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox12.getText()).getNivelTreino();
+                    jComboBox14.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox13.getText())){
+                    jCheckBox13.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox13.getText()).getNivelTreino();
+                    jComboBox15.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox14.getText())){
+                    jCheckBox14.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox14.getText()).getNivelTreino();
+                    jComboBox16.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox15.getText())){
+                    jCheckBox15.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox15.getText()).getNivelTreino();
+                    jComboBox17.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox16.getText())){
+                    jCheckBox16.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox16.getText()).getNivelTreino();
+                    jComboBox18.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox17.getText())){
+                    jCheckBox17.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox17.getText()).getNivelTreino();
+                    jComboBox19.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox18.getText())){
+                    jCheckBox18.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox18.getText()).getNivelTreino();
+                    jComboBox20.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox19.getText())){
+                    jCheckBox19.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox19.getText()).getNivelTreino();
+                    jComboBox21.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox20.getText())){
+                    jCheckBox20.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox20.getText()).getNivelTreino();
+                    jComboBox22.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox21.getText())){
+                    jCheckBox21.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox21.getText()).getNivelTreino();
+                    jComboBox23.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox22.getText())){
+                    jCheckBox22.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox22.getText()).getNivelTreino();
+                    jComboBox24.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox23.getText())){
+                    jCheckBox23.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox23.getText()).getNivelTreino();
+                    jComboBox25.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox24.getText())){
+                    jCheckBox24.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox24.getText()).getNivelTreino();
+                    jComboBox26.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox25.getText())){
+                    jCheckBox25.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox25.getText()).getNivelTreino();
+                    jComboBox27.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox26.getText())){
+                    jCheckBox26.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox26.getText()).getNivelTreino();
+                    jComboBox28.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox27.getText())){
+                    jCheckBox27.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox27.getText()).getNivelTreino();
+                    jComboBox29.setSelectedItem(niveldaPericia);
+                }
+                if(personagem.getPericiasTreinadas().containsKey(jCheckBox28.getText())){
+                    jCheckBox28.setSelected(true);
+                    String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox28.getText()).getNivelTreino();
+                    jComboBox30.setSelectedItem(niveldaPericia);
+                }
             }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox2.getText())){
-                jCheckBox2.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox2.getText()).getNivelTreino();
-                jComboBox4.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox3.getText())){
-                jCheckBox3.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox3.getText()).getNivelTreino();
-                jComboBox6.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox4.getText())){
-                jCheckBox4.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox4.getText()).getNivelTreino();
-                jComboBox5.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox5.getText())){
-                jCheckBox5.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox5.getText()).getNivelTreino();
-                jComboBox10.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox6.getText())){
-                jCheckBox6.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox6.getText()).getNivelTreino();
-                jComboBox9.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox7.getText())){
-                jCheckBox7.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox7.getText()).getNivelTreino();
-                jComboBox8.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox8.getText())){
-                jCheckBox8.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox8.getText()).getNivelTreino();
-                jComboBox7.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox9.getText())){
-                jCheckBox9.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox9.getText()).getNivelTreino();
-                jComboBox11.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox10.getText())){
-                jCheckBox10.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox10.getText()).getNivelTreino();
-                jComboBox12.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox11.getText())){
-                jCheckBox11.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox11.getText()).getNivelTreino();
-                jComboBox13.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox12.getText())){
-                jCheckBox12.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox12.getText()).getNivelTreino();
-                jComboBox14.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox13.getText())){
-                jCheckBox13.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox13.getText()).getNivelTreino();
-                jComboBox15.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox14.getText())){
-                jCheckBox14.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox14.getText()).getNivelTreino();
-                jComboBox16.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox15.getText())){
-                jCheckBox15.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox15.getText()).getNivelTreino();
-                jComboBox17.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox16.getText())){
-                jCheckBox16.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox16.getText()).getNivelTreino();
-                jComboBox18.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox17.getText())){
-                jCheckBox17.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox17.getText()).getNivelTreino();
-                jComboBox19.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox18.getText())){
-                jCheckBox18.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox18.getText()).getNivelTreino();
-                jComboBox20.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox19.getText())){
-                jCheckBox19.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox19.getText()).getNivelTreino();
-                jComboBox21.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox20.getText())){
-                jCheckBox20.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox20.getText()).getNivelTreino();
-                jComboBox22.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox21.getText())){
-                jCheckBox21.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox21.getText()).getNivelTreino();
-                jComboBox23.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox22.getText())){
-                jCheckBox22.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox22.getText()).getNivelTreino();
-                jComboBox24.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox23.getText())){
-                jCheckBox23.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox23.getText()).getNivelTreino();
-                jComboBox25.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox24.getText())){
-                jCheckBox24.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox24.getText()).getNivelTreino();
-                jComboBox26.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox25.getText())){
-                jCheckBox25.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox25.getText()).getNivelTreino();
-                jComboBox27.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox26.getText())){
-                jCheckBox26.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox26.getText()).getNivelTreino();
-                jComboBox28.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox27.getText())){
-                jCheckBox27.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox27.getText()).getNivelTreino();
-                jComboBox29.setSelectedItem(niveldaPericia);
-            }
-            if(personagem.getPericiasTreinadas().containsKey(jCheckBox28.getText())){
-                jCheckBox28.setSelected(true);
-                String niveldaPericia = personagem.getPericiasTreinadas().get(jCheckBox28.getText()).getNivelTreino();
-                jComboBox30.setSelectedItem(niveldaPericia);
-            }
-            
-            
 
             // Preenchendo Descricao do Personagem
             if(personagem.getDescricao() != null){
@@ -2656,6 +2586,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         personagem.setNome(texto);
     }
   }
+
   class PegaMudancaForcaDocumentListener implements DocumentListener{
     private String texto = "";
 
@@ -2675,8 +2606,10 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setForca(valor);
+            jTextField16.setText(texto);
+            jTextField29.setText(texto);
         } catch (NumberFormatException ex){
-                ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
@@ -2696,6 +2629,8 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setForca(valor);
+            jTextField16.setText(texto);
+            jTextField29.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
@@ -2717,11 +2652,14 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setForca(valor);
+            jTextField16.setText(texto);
+            jTextField29.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
     }
   }
+
   class PegaMudancaAgilidadeDocumentListener implements DocumentListener{
     private String texto = "";
 
@@ -2741,6 +2679,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setAgilidade(valor);
+            jTextField13.setText(texto);
+            jTextField20.setText(texto);
+            jTextField24.setText(texto);
+            jTextField25.setText(texto);
+            jTextField33.setText(texto);
+            jTextField34.setText(texto);
+            jTextField36.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
@@ -2762,6 +2707,13 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setAgilidade(valor);
+            jTextField13.setText(texto);
+            jTextField20.setText(texto);
+            jTextField24.setText(texto);
+            jTextField25.setText(texto);
+            jTextField33.setText(texto);
+            jTextField34.setText(texto);
+            jTextField36.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
@@ -2783,11 +2735,19 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setAgilidade(valor);
+            jTextField13.setText(texto);
+            jTextField20.setText(texto);
+            jTextField24.setText(texto);
+            jTextField25.setText(texto);
+            jTextField33.setText(texto);
+            jTextField34.setText(texto);
+            jTextField36.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
     }
   }
+
   class PegaMudancaIntelectoDocumentListener implements DocumentListener{
     private String texto = "";
 
@@ -2807,6 +2767,15 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setIntelecto(valor);
+            jTextField17.setText(texto);
+            jTextField19.setText(texto);
+            jTextField28.setText(texto);
+            jTextField30.setText(texto);
+            jTextField31.setText(texto);
+            jTextField35.setText(texto);
+            jTextField38.setText(texto);
+            jTextField39.setText(texto);
+            jTextField40.setText(texto);
         } catch (NumberFormatException ex){
             ex.printStackTrace();
         }
@@ -2828,6 +2797,15 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setIntelecto(valor);
+            jTextField17.setText(texto);
+            jTextField19.setText(texto);
+            jTextField28.setText(texto);
+            jTextField30.setText(texto);
+            jTextField31.setText(texto);
+            jTextField35.setText(texto);
+            jTextField38.setText(texto);
+            jTextField39.setText(texto);
+            jTextField40.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
@@ -2849,11 +2827,21 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 valor = Integer.parseInt(texto);
             }
             personagem.getAtributos().setIntelecto(valor);
+            jTextField17.setText(texto);
+            jTextField19.setText(texto);
+            jTextField28.setText(texto);
+            jTextField30.setText(texto);
+            jTextField31.setText(texto);
+            jTextField35.setText(texto);
+            jTextField38.setText(texto);
+            jTextField39.setText(texto);
+            jTextField40.setText(texto);
         } catch (NumberFormatException ex){
                 ex.printStackTrace();
         }
     }
   }
+
     class PegaMudancaPresencaDocumentListener implements DocumentListener{
         private String texto = "";
 
@@ -2873,6 +2861,15 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setPresenca(valor);
+                jTextField14.setText(texto);
+                jTextField15.setText(texto);
+                jTextField21.setText(texto);
+                jTextField22.setText(texto);
+                jTextField26.setText(texto);
+                jTextField27.setText(texto);
+                jTextField32.setText(texto);
+                jTextField37.setText(texto);
+                jTextField69.setText(texto);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
             }
@@ -2894,6 +2891,15 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setPresenca(valor);
+                jTextField14.setText(texto);
+                jTextField15.setText(texto);
+                jTextField21.setText(texto);
+                jTextField22.setText(texto);
+                jTextField26.setText(texto);
+                jTextField27.setText(texto);
+                jTextField32.setText(texto);
+                jTextField37.setText(texto);
+                jTextField69.setText(texto);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
             }
@@ -2915,11 +2921,21 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setPresenca(valor);
+                jTextField14.setText(texto);
+                jTextField15.setText(texto);
+                jTextField21.setText(texto);
+                jTextField22.setText(texto);
+                jTextField26.setText(texto);
+                jTextField27.setText(texto);
+                jTextField32.setText(texto);
+                jTextField37.setText(texto);
+                jTextField69.setText(texto);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
             }
         }
     }
+    
     class PegaMudancaVigorDocumentListener implements DocumentListener{
         private String texto = "";
 
@@ -2939,6 +2955,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setVigor(valor);
+                jTextField23.setText(texto);
             } catch (NumberFormatException ex){
                 ex.printStackTrace();
             }
@@ -2960,6 +2977,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setVigor(valor);
+                jTextField23.setText(texto);
             } catch (NumberFormatException ex){
                     ex.printStackTrace();
             }
@@ -2981,6 +2999,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
                     valor = Integer.parseInt(texto);
                 }
                 personagem.getAtributos().setVigor(valor);
+                jTextField23.setText(texto);
             } catch (NumberFormatException ex){
                     ex.printStackTrace();
             }

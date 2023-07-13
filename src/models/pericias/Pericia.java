@@ -18,7 +18,6 @@ public class Pericia implements IPericia, Serializable {
 	boolean dependeCarga, boolean dependeKitUtensilios) {
 		this.nome = nome;
 		this.nivelTreino = nivelTreino;
-		System.out.println(nivelTreino);
 		this.modificadorTreino = modificadorTreino;
 		this.nivelAtributoBase = nivelAtributoBase;
 		this.dependeCarga = dependeCarga;

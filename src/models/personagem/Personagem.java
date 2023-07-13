@@ -86,7 +86,7 @@ public class Personagem implements Serializable{
 	            throw new IllegalArgumentException("O nome do jogador não pode ser nulo.");
 	        }
 	        
-	        this.nome = nome;
+	        this.jogador = nome;
 	    } catch (IllegalArgumentException e) {
 	        System.err.println("Erro ao definir o nome do jogador: " + e.getMessage());
 	    }
