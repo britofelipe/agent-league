@@ -14,7 +14,7 @@ import models.personagem.Personagem;
 public class Empacotamento {
   // serialização: gravando o objetos no arquivo binário "nomeArq"
   public static void gravarArquivoBinario(ArrayList<Personagem> lista, String nomeArq) {
-    String pathDir = "./agent-league/src/arquivo";
+    String pathDir = "./arquivo";
     File diretorio = new File(pathDir);
     if (!diretorio.isDirectory()) {
       diretorio.mkdir();
@@ -32,7 +32,7 @@ public class Empacotamento {
   // desserialização: recuperando os objetos gravados no arquivo binário "nomeArq"
   public static ArrayList<Personagem> lerArquivoBinario(String nomeArq)  {
     ArrayList<Personagem> lista = new ArrayList();
-    String pathDir = "./agent-league/src/arquivo";
+    String pathDir = "./arquivo";
     File diretorio = new File(pathDir);
     if (!diretorio.isDirectory()) {
       diretorio.mkdir();
