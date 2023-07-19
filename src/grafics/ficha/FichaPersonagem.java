@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import models.personagem.*;
+import models.trilhas.TrilhaAbstrata;
 import models.trilhas.combatente.*;
 import models.trilhas.especialista.*;
 import models.trilhas.ocultista.*;
@@ -28,6 +29,9 @@ import models.pericias.Pericia;
 public class FichaPersonagem extends javax.swing.JFrame {
     private Personagem personagem;
     private Map<String, Pericia> periciafinal = new HashMap<>();
+    private String[] nomeTrilhasStrings = null;
+	private TrilhaAbstrata[] trilhasInstanciadas = null;
+	private Map<String,TrilhaAbstrata> trilhasMap = new HashMap();
     /**
      * Creates new form NewJFrame
      */
@@ -1901,22 +1905,25 @@ public class FichaPersonagem extends javax.swing.JFrame {
         });
 
         jLabel51.setText("Classe:");
+        
+        jCheckBox29.setVisible(false);
 
         jComboBox31.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Combatente", "Especialista", "Ocultista" }));
         jComboBox31.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e){
-                if(e.getStateChange() == ItemEvent.SELECTED){	
-                    if("Combatente".equals((String) jComboBox31.getSelectedItem())){
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                	jCheckBox29.setVisible(true);
+                    if("Combatente".equals((String) jComboBox31.getSelectedItem()) && personagem.getClasse() == null){
                         Combatente classe = new Combatente(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                         
                     }
-                    else if("Especialista".equals((String) jComboBox31.getSelectedItem())){
+                    else if("Especialista".equals((String) jComboBox31.getSelectedItem()) && personagem.getClasse() == null){
                         Especialista classe = new Especialista(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                     }
-                    else if("Ocultista".equals((String) jComboBox31.getSelectedItem())){
+                    else if("Ocultista".equals((String) jComboBox31.getSelectedItem()) && personagem.getClasse() == null){
                         Ocultista classe = new Ocultista(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                     }
@@ -1926,11 +1933,51 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 }
             }
         });
+        
+        jLabel52.setVisible(false);
+        jComboBox32.setVisible(false);
 
         jCheckBox29.setText("Ativar trilha");
+        jCheckBox29.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					jLabel52.setVisible(true);
+					jComboBox32.setVisible(true);
+					if("Combatente".equals((String)jComboBox31.getSelectedItem())) {
+						nomeTrilhasStrings = new String[] { "", "Aniquilador", "Comandante de Campo", "Guerreiro", "Operações Especiais", "Tropa de Choque" };
+						jComboBox32.setModel(new javax.swing.DefaultComboBoxModel<>(nomeTrilhasStrings));
+						trilhasInstanciadas = new TrilhaAbstrata[] {null, new Aniquilador(), new ComandanteDeCampo(), new Guerreiro(), new OperacoesEspeciais(), new TropaDeChoque()};
+					}
+					else if("Especialista".equals((String)jComboBox31.getSelectedItem())) {
+						nomeTrilhasStrings = new String[] { "", "Atirador de Elite", "Infiltrador", "Médico de Campo", "Negociador", "Técnico" };
+						jComboBox32.setModel(new javax.swing.DefaultComboBoxModel<>(nomeTrilhasStrings));
+						trilhasInstanciadas = new TrilhaAbstrata[] {null, new AtiradorDeElite(), new Infiltrador(), new MedicoDeCampo(), new Negociador(), new Tecnico()};
+					}
+					else if("Ocultista".equals((String)jComboBox31.getSelectedItem())) {
+						nomeTrilhasStrings = new String[] { "", "Conduíte", "Flagelador", "Graduado", "Intuitivo", "Lâmina Paranormal" };
+						jComboBox32.setModel(new javax.swing.DefaultComboBoxModel<>(nomeTrilhasStrings));
+						trilhasInstanciadas = new TrilhaAbstrata[] {null, new Conduite(), new Flagelador(), new Graduado(), new Intuitivo(), new LaminaParanormal()};
+					}
+					if(nomeTrilhasStrings != null) {
+						for(int i = 0; i < nomeTrilhasStrings.length; i++) {
+							trilhasMap.put(nomeTrilhasStrings[i], trilhasInstanciadas[i]);
+						}
+					}
+					
+				}
+			}
+        });
 
-        jComboBox32.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trilha 1", "Trilha 2", "Trilha 3", "Trilha 4", "Trilha 5" }));
-
+        jComboBox32.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(jCheckBox29.getSelectedObjects() != null) {
+					personagem.getClasse().setTrilha(trilhasMap.get((String)jComboBox32.getSelectedItem()));
+				}
+			}
+        });
+        
         jLabel52.setText("Trilha:");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -2845,6 +2892,10 @@ public class FichaPersonagem extends javax.swing.JFrame {
             	jComboBox31.setSelectedIndex(3);
             }
             jTextField43.setText(personagem.getOrigem().getNome());
+            if(personagem.getClasse().getTrilha() != null) {
+            	jCheckBox29.setSelected(true);
+            	jComboBox32.setSelectedItem(personagem.getClasse().getTrilha().getNome());
+            }
             
 
             // Preenchendo Atributos em Ficha do Agente

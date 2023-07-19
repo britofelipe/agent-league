@@ -27,6 +27,7 @@ public abstract class TrilhaAbstrata implements ITrilha, Serializable {
 	        }
 
 	        this.nome = nome;
+	        System.out.println(this.nome);
 	        this.descricao = descricao;
 	        this.poderNex10 = poderNex10;
 	        this.poderNex40 = poderNex40;
