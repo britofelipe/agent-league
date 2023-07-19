@@ -1,6 +1,8 @@
 package models.poderes;
 
-public class Poder implements IPoder {
+import java.io.Serializable;
+
+public class Poder implements IPoder, Serializable {
 	private String nome;
 	private String descricao;
 	

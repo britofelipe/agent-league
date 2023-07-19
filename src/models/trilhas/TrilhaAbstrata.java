@@ -1,8 +1,10 @@
 package models.trilhas;
 
+import java.io.Serializable;
+
 import models.poderes.Poder;
 
-public abstract class TrilhaAbstrata implements ITrilha {
+public abstract class TrilhaAbstrata implements ITrilha, Serializable {
 	protected String nome;
 	protected String descricao;
 	protected Poder poderNex10;

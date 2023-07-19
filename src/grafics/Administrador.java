@@ -49,8 +49,8 @@ public class Administrador extends JFrame implements ActionListener, MouseListen
 
     setLayout(new BorderLayout());
 
-    listModel = new DefaultListModel();
-    fichasList = new JList(listModel);
+    listModel = new DefaultListModel<Personagem>();
+    fichasList = new JList<Personagem>(listModel);
     fichasList.setCellRenderer(new PersonagemListRenderer());
     fichasList.addMouseListener(this);
     JScrollPane scrollPane = new JScrollPane(fichasList);

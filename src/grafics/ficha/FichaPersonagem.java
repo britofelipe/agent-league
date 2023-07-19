@@ -12,12 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import models.personagem.*;
-import models.trilhas.combatente.Aniquilador;
-import models.trilhas.especialista.AtiradorDeElite;
-import models.trilhas.ocultista.Conduite;
+import models.trilhas.combatente.*;
+import models.trilhas.especialista.*;
+import models.trilhas.ocultista.*;
 import models.classes.Combatente;
 import models.classes.Especialista;
 import models.classes.Ocultista;
+import models.origens.*;
 import models.pericias.Pericia;
 
 /**
@@ -309,9 +310,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox1.getText())){
-                        jComboBox3.setSelectedIndex(1);
-                        Pericia periciaParaAdicionar = new Pericia(jCheckBox1.getText(), (String) jComboBox3.getSelectedItem(), 5, personagem.getAgilidade(), false, true, false);                                                
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox1.getText(), "Treinada", 5, personagem.getAgilidade(), false, true, false);                                                
                         periciafinal.put(jCheckBox1.getText(), periciaParaAdicionar);
+                        jComboBox3.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -323,10 +324,10 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(!periciafinal.containsKey(jCheckBox2.getText())){
-                        jComboBox4.setSelectedIndex(1);
-                        Pericia periciaParaAdicionar = new Pericia(jCheckBox2.getText(), (String) jComboBox4.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
+                    if(!periciafinal.containsKey(jCheckBox2.getText())){ 
+                        Pericia periciaParaAdicionar = new Pericia(jCheckBox2.getText(), "Treinada", 5, personagem.getPresenca(), true, false, false);
                         periciafinal.put(jCheckBox2.getText(), periciaParaAdicionar);
+                        jComboBox4.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
 
@@ -340,9 +341,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox3.getText())){
-                        jComboBox6.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox3.getText(), (String) jComboBox6.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
                         periciafinal.put(jCheckBox3.getText(), periciaParaAdicionar);
+                        jComboBox6.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -355,9 +356,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox4.getText())){
-                        jComboBox5.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox4.getText(), (String) jComboBox5.getSelectedItem(), 5, personagem.getForca(), false, false, false);
                         periciafinal.put(jCheckBox4.getText(), periciaParaAdicionar);
+                        jComboBox5.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -369,11 +370,10 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    System.out.println("Entrou em Atualidade");
                     if(!periciafinal.containsKey(jCheckBox5.getText())){
-                        jComboBox10.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox5.getText(), (String) jComboBox10.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
                         periciafinal.put(jCheckBox5.getText(), periciaParaAdicionar);
+                        jComboBox10.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -386,9 +386,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox6.getText())){
-                        jComboBox9.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox6.getText(), (String) jComboBox9.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
                         periciafinal.put(jCheckBox6.getText(), periciaParaAdicionar);
+                        jComboBox9.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -401,9 +401,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox7.getText())){
-                        jComboBox8.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox7.getText(), (String) jComboBox8.getSelectedItem(), 5, personagem.getAgilidade(), false, true, true);
                         periciafinal.put(jCheckBox7.getText(), periciaParaAdicionar);
+                        jComboBox8.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);    
                     }                    
                 }
@@ -416,9 +416,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox8.getText())){
-                        jComboBox7.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox8.getText(), (String) jComboBox7.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox8.getText(), periciaParaAdicionar);
+                        jComboBox7.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -431,9 +431,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox9.getText())){
-                        jComboBox11.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox9.getText(), (String) jComboBox11.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox9.getText(), periciaParaAdicionar);
+                        jComboBox11.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -446,9 +446,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox10.getText())){
-                        jComboBox12.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox10.getText(), (String) jComboBox12.getSelectedItem(), 5, personagem.getVigor(), false, false, false);
                         periciafinal.put(jCheckBox10.getText(), periciaParaAdicionar);
+                        jComboBox12.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -460,10 +460,10 @@ public class FichaPersonagem extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(!periciafinal.containsKey(jCheckBox11.getText())){ 
-                        jComboBox13.setSelectedIndex(1);                     
+                    if(!periciafinal.containsKey(jCheckBox11.getText())){                     
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox11.getText(), (String) jComboBox13.getSelectedItem(), 5, personagem.getAgilidade(), false, true, false);
                         periciafinal.put(jCheckBox11.getText(), periciaParaAdicionar);
+                        jComboBox13.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -476,9 +476,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox12.getText())){
-                        jComboBox14.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox12.getText(), (String) jComboBox14.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
                         periciafinal.put(jCheckBox12.getText(), periciaParaAdicionar);
+                        jComboBox14.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                     
@@ -492,9 +492,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox13.getText())){
-                        jComboBox15.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox13.getText(), (String) jComboBox15.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox13.getText(), periciaParaAdicionar);
+                        jComboBox15.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -507,12 +507,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox14.getText())){
-                        jComboBox16.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox14.getText(), (String) jComboBox16.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox14.getText(), periciaParaAdicionar);
+                        jComboBox16.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -523,9 +522,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox15.getText())){
-                        jComboBox17.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox15.getText(), (String) jComboBox17.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
                         periciafinal.put(jCheckBox15.getText(), periciaParaAdicionar);
+                        jComboBox17.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -538,12 +537,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox16.getText())){
-                        jComboBox18.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox15.getText(), (String) jComboBox18.getSelectedItem(), 5, personagem.getForca(), false, false, false);
                         periciafinal.put(jCheckBox16.getText(), periciaParaAdicionar);
+                        jComboBox18.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -554,12 +552,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox17.getText())){
-                        jComboBox19.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox17.getText(), (String) jComboBox19.getSelectedItem(), 5, personagem.getIntelecto(), false, false, true);
                         periciafinal.put(jCheckBox17.getText(), periciaParaAdicionar);
+                        jComboBox19.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -570,9 +567,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox18.getText())){
-                        jComboBox20.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox18.getText(), (String) jComboBox20.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
                         periciafinal.put(jCheckBox18.getText(), periciaParaAdicionar);
+                        jComboBox20.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                     
@@ -586,12 +583,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox19.getText())){
-                        jComboBox21.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox19.getText(), (String) jComboBox21.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox19.getText(), periciaParaAdicionar);
+                        jComboBox21.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -602,12 +598,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox20.getText())){
-                        jComboBox22.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox20.getText(), (String) jComboBox22.getSelectedItem(), 5, personagem.getAgilidade(), true, false, false);
                         periciafinal.put(jCheckBox20.getText(), periciaParaAdicionar);
+                        jComboBox22.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -618,12 +613,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox21.getText())){
-                        jComboBox23.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox21.getText(), (String) jComboBox23.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
                         periciafinal.put(jCheckBox21.getText(), periciaParaAdicionar);
+                        jComboBox23.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -634,9 +628,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox22.getText())){
-                        jComboBox24.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox22.getText(), (String) jComboBox24.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
                         periciafinal.put(jCheckBox22.getText(), periciaParaAdicionar);
+                        jComboBox24.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
@@ -649,9 +643,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox23.getText())){
-                        jComboBox25.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox23.getText(), (String) jComboBox25.getSelectedItem(), 5, personagem.getAgilidade(), false, false, false);
                         periciafinal.put(jCheckBox23.getText(), periciaParaAdicionar);
+                        jComboBox25.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -664,9 +658,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox24.getText())){
-                        jComboBox26.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox24.getText(), (String) jComboBox26.getSelectedItem(), 5, personagem.getPresenca(), true, false, false);
                         periciafinal.put(jCheckBox24.getText(), periciaParaAdicionar);
+                        jComboBox26.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -679,9 +673,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox25.getText())){
-                        jComboBox27.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox25.getText(), (String) jComboBox27.getSelectedItem(), 5, personagem.getIntelecto(), false, false, false);
                         periciafinal.put(jCheckBox25.getText(), periciaParaAdicionar);
+                        jComboBox27.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -694,12 +688,11 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox26.getText())){
-                        jComboBox28.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox26.getText(), (String) jComboBox28.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
                         periciafinal.put(jCheckBox26.getText(), periciaParaAdicionar);
+                        jComboBox28.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
-                    
                 }
             }
         });
@@ -710,9 +703,9 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox27.getText())){
-                        jComboBox29.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox27.getText(), (String) jComboBox29.getSelectedItem(), 5, personagem.getIntelecto(), true, false, false);
                         periciafinal.put(jCheckBox27.getText(), periciaParaAdicionar);
+                        jComboBox29.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }                    
                 }
@@ -725,127 +718,414 @@ public class FichaPersonagem extends javax.swing.JFrame {
             public void itemStateChanged(ItemEvent e){
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!periciafinal.containsKey(jCheckBox28.getText())){
-                        jComboBox30.setSelectedIndex(1);
                         Pericia periciaParaAdicionar = new Pericia(jCheckBox28.getText(), (String) jComboBox30.getSelectedItem(), 5, personagem.getPresenca(), false, false, false);
                         periciafinal.put(jCheckBox28.getText(), periciaParaAdicionar);
+                        jComboBox30.setSelectedIndex(1);
                         personagem.setPericiasTreinadas(periciafinal);
                     }
                 }
             }
         });
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
-
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
         
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        String[] niveisDeTreinamento = { "Destreinado", "Treinado", "Veterano", "Expert" };
+        int[] valoresNiveis = {0, 5, 10, 15};
+        Map<String,Integer> valoresPorNiveisDeTreinamento = new HashMap<>();
+        for(int i = 0; i < niveisDeTreinamento.length; i++) {
+        	valoresPorNiveisDeTreinamento.put(niveisDeTreinamento[i], valoresNiveis[i]);
+        }
 
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(periciafinal.containsKey(jCheckBox1.getText())) {
+					periciafinal.get(jCheckBox1.getText()).setNivelTreino((String)jComboBox3.getSelectedItem());
+					periciafinal.get(jCheckBox1.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox3.getSelectedItem()));
+					jTextField46.setText(String.valueOf(periciafinal.get(jCheckBox1.getText()).getModificadorTreino()));
+				}
+			}
+        });
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox4.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(periciafinal.containsKey(jCheckBox2.getText())) {
+					periciafinal.get(jCheckBox2.getText()).setNivelTreino((String)jComboBox4.getSelectedItem());
+					periciafinal.get(jCheckBox2.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox4.getSelectedItem()));
+					jTextField47.setText(String.valueOf(periciafinal.get(jCheckBox2.getText()).getModificadorTreino()));
+				}
+			}
+        });
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox5.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(periciafinal.containsKey(jCheckBox4.getText())) {
+					periciafinal.get(jCheckBox4.getText()).setNivelTreino((String)jComboBox5.getSelectedItem());
+					periciafinal.get(jCheckBox4.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox5.getSelectedItem()));
+					jTextField49.setText(String.valueOf(periciafinal.get(jCheckBox4.getText()).getModificadorTreino()));
+				}
+			}
+        });
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox6.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(periciafinal.containsKey(jCheckBox3.getText())) {
+					periciafinal.get(jCheckBox3.getText()).setNivelTreino((String)jComboBox6.getSelectedItem());
+					periciafinal.get(jCheckBox3.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox6.getSelectedItem()));
+					jTextField48.setText(String.valueOf(periciafinal.get(jCheckBox3.getText()).getModificadorTreino()));
+				}
+			}
+        });
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox7.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox8.getText())) {
+        			periciafinal.get(jCheckBox8.getText()).setNivelTreino((String)jComboBox7.getSelectedItem());
+					periciafinal.get(jCheckBox8.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox7.getSelectedItem()));
+					jTextField53.setText(String.valueOf(periciafinal.get(jCheckBox8.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox8.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox7.getText())) {
+        			periciafinal.get(jCheckBox7.getText()).setNivelTreino((String)jComboBox8.getSelectedItem());
+					periciafinal.get(jCheckBox7.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox8.getSelectedItem()));
+					jTextField52.setText(String.valueOf(periciafinal.get(jCheckBox7.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox9.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox6.getText())) {
+        			periciafinal.get(jCheckBox6.getText()).setNivelTreino((String)jComboBox9.getSelectedItem());
+					periciafinal.get(jCheckBox6.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox9.getSelectedItem()));
+					jTextField51.setText(String.valueOf(periciafinal.get(jCheckBox6.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox10.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox5.getText())) {
+        			periciafinal.get(jCheckBox5.getText()).setNivelTreino((String)jComboBox10.getSelectedItem());
+					periciafinal.get(jCheckBox5.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox10.getSelectedItem()));
+					jTextField50.setText(String.valueOf(periciafinal.get(jCheckBox5.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox11.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox9.getText())) {
+        			periciafinal.get(jCheckBox9.getText()).setNivelTreino((String)jComboBox11.getSelectedItem());
+					periciafinal.get(jCheckBox9.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox11.getSelectedItem()));
+					jTextField54.setText(String.valueOf(periciafinal.get(jCheckBox9.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox12.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox10.getText())) {
+        			periciafinal.get(jCheckBox10.getText()).setNivelTreino((String)jComboBox12.getSelectedItem());
+					periciafinal.get(jCheckBox10.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox12.getSelectedItem()));
+					jTextField55.setText(String.valueOf(periciafinal.get(jCheckBox10.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox13.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox11.getText())) {
+        			periciafinal.get(jCheckBox11.getText()).setNivelTreino((String)jComboBox13.getSelectedItem());
+					periciafinal.get(jCheckBox11.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox13.getSelectedItem()));
+					jTextField56.setText(String.valueOf(periciafinal.get(jCheckBox11.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox14.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox12.getText())) {
+        			periciafinal.get(jCheckBox12.getText()).setNivelTreino((String)jComboBox14.getSelectedItem());
+					periciafinal.get(jCheckBox12.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox14.getSelectedItem()));
+					jTextField57.setText(String.valueOf(periciafinal.get(jCheckBox12.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
         
-        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox15.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox13.getText())) {
+        			periciafinal.get(jCheckBox13.getText()).setNivelTreino((String)jComboBox15.getSelectedItem());
+					periciafinal.get(jCheckBox13.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox15.getSelectedItem()));
+					jTextField58.setText(String.valueOf(periciafinal.get(jCheckBox13.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
+
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox16.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox14.getText())) {
+        			periciafinal.get(jCheckBox14.getText()).setNivelTreino((String)jComboBox16.getSelectedItem());
+					periciafinal.get(jCheckBox14.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox16.getSelectedItem()));
+					jTextField59.setText(String.valueOf(periciafinal.get(jCheckBox14.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
         
+        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox17.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox15.getText())) {
+        			periciafinal.get(jCheckBox15.getText()).setNivelTreino((String)jComboBox17.getSelectedItem());
+					periciafinal.get(jCheckBox15.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox17.getSelectedItem()));
+					jTextField60.setText(String.valueOf(periciafinal.get(jCheckBox15.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox18.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox16.getText())) {
+        			periciafinal.get(jCheckBox16.getText()).setNivelTreino((String)jComboBox18.getSelectedItem());
+					periciafinal.get(jCheckBox16.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox18.getSelectedItem()));
+					jTextField61.setText(String.valueOf(periciafinal.get(jCheckBox16.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox19.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox17.getText())) {
+        			periciafinal.get(jCheckBox17.getText()).setNivelTreino((String)jComboBox19.getSelectedItem());
+					periciafinal.get(jCheckBox17.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox19.getSelectedItem()));
+					jTextField62.setText(String.valueOf(periciafinal.get(jCheckBox17.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox20.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox18.getText())) {
+        			periciafinal.get(jCheckBox18.getText()).setNivelTreino((String)jComboBox20.getSelectedItem());
+					periciafinal.get(jCheckBox18.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox20.getSelectedItem()));
+					jTextField63.setText(String.valueOf(periciafinal.get(jCheckBox18.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
         
-        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox21.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox19.getText())) {
+        			periciafinal.get(jCheckBox19.getText()).setNivelTreino((String)jComboBox21.getSelectedItem());
+					periciafinal.get(jCheckBox19.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox21.getSelectedItem()));
+					jTextField64.setText(String.valueOf(periciafinal.get(jCheckBox19.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox22.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox20.getText())) {
+        			periciafinal.get(jCheckBox20.getText()).setNivelTreino((String)jComboBox22.getSelectedItem());
+					periciafinal.get(jCheckBox20.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox22.getSelectedItem()));
+					jTextField65.setText(String.valueOf(periciafinal.get(jCheckBox20.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox23.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox21.getText())) {
+        			periciafinal.get(jCheckBox21.getText()).setNivelTreino((String)jComboBox23.getSelectedItem());
+					periciafinal.get(jCheckBox21.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox23.getSelectedItem()));
+					jTextField66.setText(String.valueOf(periciafinal.get(jCheckBox21.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox24.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox22.getText())) {
+        			periciafinal.get(jCheckBox22.getText()).setNivelTreino((String)jComboBox24.getSelectedItem());
+					periciafinal.get(jCheckBox22.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox24.getSelectedItem()));
+					jTextField67.setText(String.valueOf(periciafinal.get(jCheckBox22.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox25.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox25.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox25.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox23.getText())) {
+        			periciafinal.get(jCheckBox23.getText()).setNivelTreino((String)jComboBox25.getSelectedItem());
+					periciafinal.get(jCheckBox23.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox25.getSelectedItem()));
+					jTextField68.setText(String.valueOf(periciafinal.get(jCheckBox23.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox26.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox26.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox26.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox24.getText())) {
+        			periciafinal.get(jCheckBox24.getText()).setNivelTreino((String)jComboBox26.getSelectedItem());
+					periciafinal.get(jCheckBox24.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox26.getSelectedItem()));
+					jTextField70.setText(String.valueOf(periciafinal.get(jCheckBox24.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox27.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox27.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox27.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox25.getText())) {
+        			periciafinal.get(jCheckBox25.getText()).setNivelTreino((String)jComboBox27.getSelectedItem());
+					periciafinal.get(jCheckBox25.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox27.getSelectedItem()));
+					jTextField71.setText(String.valueOf(periciafinal.get(jCheckBox25.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox28.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox28.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox28.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox26.getText())) {
+        			periciafinal.get(jCheckBox26.getText()).setNivelTreino((String)jComboBox28.getSelectedItem());
+					periciafinal.get(jCheckBox26.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox28.getSelectedItem()));
+					jTextField72.setText(String.valueOf(periciafinal.get(jCheckBox26.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox29.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox29.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox29.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox27.getText())) {
+        			periciafinal.get(jCheckBox27.getText()).setNivelTreino((String)jComboBox29.getSelectedItem());
+					periciafinal.get(jCheckBox27.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox29.getSelectedItem()));
+					jTextField73.setText(String.valueOf(periciafinal.get(jCheckBox27.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destreinado", "Treinado", "Veterano", "Expert" }));
+        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel<>(niveisDeTreinamento));
+        jComboBox30.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		if(periciafinal.containsKey(jCheckBox28.getText())) {
+        			periciafinal.get(jCheckBox28.getText()).setNivelTreino((String)jComboBox30.getSelectedItem());
+					periciafinal.get(jCheckBox28.getText()).setModificadorTreino(valoresPorNiveisDeTreinamento.get((String)jComboBox30.getSelectedItem()));
+					jTextField74.setText(String.valueOf(periciafinal.get(jCheckBox28.getText()).getModificadorTreino()));
+        		}
+        	}
+        });
 
-        jTextField46.setText("1");
+        // Aqui começa os BONUS!!!!!
+        jTextField46.setText("0");
         
-        jTextField47.setText("1");
+        jTextField47.setText("0");
         
-        jTextField48.setText("1");
+        jTextField48.setText("0");
         
-        jTextField49.setText("1");
+        jTextField49.setText("0");
         
-        jTextField50.setText("1");
+        jTextField50.setText("0");
         
-        jTextField51.setText("1");
+        jTextField51.setText("0");
         
-        jTextField52.setText("1");
+        jTextField52.setText("0");
         
-        jTextField53.setText("1");
+        jTextField53.setText("0");
 
-        jTextField54.setText("1");
+        jTextField54.setText("0");
 
-        jTextField55.setText("1");
+        jTextField55.setText("0");
 
-        jTextField56.setText("1");
+        jTextField56.setText("0");
 
-        jTextField57.setText("1");
+        jTextField57.setText("0");
 
-        jTextField58.setText("1");
-
-        jTextField59.setText("1");
-
-        jTextField60.setText("1");
-
-        jTextField61.setText("1");
-
-        jTextField62.setText("1");
-
-        jTextField63.setText("1");
+        jTextField58.setText("0");
         
-        jTextField64.setText("1");
+        jTextField59.setText("0");
+
+        jTextField60.setText("0");
+
+        jTextField61.setText("0");
+
+        jTextField62.setText("0");
+
+        jTextField63.setText("0");
         
-        jTextField65.setText("1");
+        jTextField64.setText("0");
         
-        jTextField66.setText("1");
+        jTextField65.setText("0");
         
-        jTextField67.setText("1");
+        jTextField66.setText("0");
         
-        jTextField68.setText("1");
+        jTextField67.setText("0");
+        
+        jTextField68.setText("0");
 
-        jTextField70.setText("1");
+        jTextField70.setText("0");
 
-        jTextField71.setText("1");
+        jTextField71.setText("0");
 
-        jTextField72.setText("1");
+        jTextField72.setText("0");
 
-        jTextField73.setText("1");
+        jTextField73.setText("0");
 
-        jTextField74.setText("1");
+        jTextField74.setText("0");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1210,27 +1490,439 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jTextField42.getDocument().addDocumentListener(new PegaMudancaJogadorDocumentListener());
 
         jLabel33.setText("Origem:");
+        String[] nomeOrigens = {"Acadêmico", "Agente de Saúde", "Artista", 
+        		"Atleta", "Chef", "Criminoso", "Cultista Arrependido", "Desgarrado"
+        		, "Engenheiro", "Executivo", "Investigador", "Lutador", "Magnata",
+        		"Mercenário", "Militar", "Operário", "Policial", "Religioso", 
+        		"Servidor Público", "Teorico da Conspiração", "T.I.", "Trabalhador Rural", 
+        		"Trambiqueiro", "Universitário", "Vítima"};
+        OrigemAbstrata[] todasOrigens = {new OrigemAcademico(personagem.getAtributos()),
+        		  new OrigemAgenteDeSaude(personagem.getAtributos()),
+        		  new OrigemArtista(personagem.getAtributos()),
+        		  new OrigemAtleta(personagem.getAtributos()),
+        		  new OrigemChef(personagem.getAtributos()),
+        		  new OrigemCriminoso(personagem.getAtributos()),
+        		  new OrigemCultistaArrependido(personagem.getAtributos()),
+        		  new OrigemDesgarrado(personagem.getAtributos()),
+        		  new OrigemEngenheiro(personagem.getAtributos()),
+        		  new OrigemExecutivo(personagem.getAtributos()),
+        		  new OrigemInvestigador(personagem.getAtributos()),
+        		  new OrigemLutador(personagem.getAtributos()),
+        		  new OrigemMagnata(personagem.getAtributos()),
+        		  new OrigemMercenario(personagem.getAtributos()),
+        		  new OrigemMilitar(personagem.getAtributos()),
+        		  new OrigemOperario(personagem.getAtributos()),
+        		  new OrigemPolicial(personagem.getAtributos()),
+        		  new OrigemReligioso(personagem.getAtributos()),
+        		  new OrigemServidorPublico(personagem.getAtributos()),
+        		  new OrigemTeoricoDaConspiracao(personagem.getAtributos()),
+        		  new OrigemTI(personagem.getAtributos()),
+        		  new OrigemTrabalhadorRural(personagem.getAtributos()),
+        		  new OrigemTrambiqueiro(personagem.getAtributos()),
+        		  new OrigemUniversitario(personagem.getAtributos()),
+        		  new OrigemVitima(personagem.getAtributos())
+        		};
+        Map<String,OrigemAbstrata> mapaOrigens = new HashMap<>();
+        for(int i = 0; i < nomeOrigens.length; i++) {
+        	mapaOrigens.put(nomeOrigens[i], todasOrigens[i]);
+        }
+        
+        jTextField43.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyReleased(KeyEvent e) {
+        		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+        			String origemEscolhida = jTextField43.getText();
+        			if(mapaOrigens.containsKey(origemEscolhida)) {
+        				personagem.setOrigem(mapaOrigens.get(origemEscolhida));
+        				if(!periciafinal.containsValue(personagem.getOrigem().getPericiaTreinada1())) {
+        					String nomePericiaString = personagem.getOrigem().getPericiaTreinada1().getNome();
+        					if(nomePericiaString.equals("Acrobacia")) {
+        						jCheckBox1.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Adestramento")) {
+        						jCheckBox2.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Artes")) {
+        						jCheckBox3.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Atletismo")) {
+        						jCheckBox4.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Atualidade")) {
+        						jCheckBox5.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Ciência")) {
+        						jCheckBox6.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Crime")) {
+        						jCheckBox7.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Diplomacia")) {
+        						jCheckBox8.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Enganação")) {
+        						jCheckBox9.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Fortitude")) {
+        						jCheckBox10.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Furtividade")) {
+        						jCheckBox11.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Iniciativa")) {
+        						jCheckBox12.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Intimidação")) {
+        						jCheckBox13.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Intuição")) {
+        						jCheckBox14.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Investigação")) {
+        						jCheckBox15.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Luta")) {
+        						jCheckBox16.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Medicina")) {
+        						jCheckBox17.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Ocultismo")) {
+        						jCheckBox18.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Percepção")) {
+        						jCheckBox19.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Pilotagem")) {
+        						jCheckBox20.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Pontaria")) {
+        						jCheckBox21.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Profissão")) {
+        						jCheckBox22.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Reflexos")) {
+        						jCheckBox23.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Religião")) {
+        						jCheckBox24.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Sobrevivência")) {
+        						jCheckBox25.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Tática")) {
+        						jCheckBox26.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Tecnologia")) {
+        						jCheckBox27.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Vontade")) {
+        						jCheckBox28.setSelected(true);
+        					}
+        					else {}
+        				}
+        				if(!periciafinal.containsValue(personagem.getOrigem().getPericiaTreinada2())) {
+        					String nomePericiaString = personagem.getOrigem().getPericiaTreinada2().getNome();
+        					if(nomePericiaString.equals("Acrobacia")) {
+        						jCheckBox1.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Adestramento")) {
+        						jCheckBox2.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Artes")) {
+        						jCheckBox3.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Atletismo")) {
+        						jCheckBox4.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Atualidade")) {
+        						jCheckBox5.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Ciência")) {
+        						jCheckBox6.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Crime")) {
+        						jCheckBox7.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Diplomacia")) {
+        						jCheckBox8.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Enganação")) {
+        						jCheckBox9.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Fortitude")) {
+        						jCheckBox10.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Furtividade")) {
+        						jCheckBox11.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Iniciativa")) {
+        						jCheckBox12.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Intimidação")) {
+        						jCheckBox13.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Intuição")) {
+        						jCheckBox14.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Investigação")) {
+        						jCheckBox15.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Luta")) {
+        						jCheckBox16.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Medicina")) {
+        						jCheckBox17.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Ocultismo")) {
+        						jCheckBox18.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Percepção")) {
+        						jCheckBox19.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Pilotagem")) {
+        						jCheckBox20.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Pontaria")) {
+        						jCheckBox21.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Profissão")) {
+        						jCheckBox22.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Reflexos")) {
+        						jCheckBox23.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Religião")) {
+        						jCheckBox24.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Sobrevivência")) {
+        						jCheckBox25.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Tática")) {
+        						jCheckBox26.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Tecnologia")) {
+        						jCheckBox27.setSelected(true);
+        					}
+        					else if(nomePericiaString.equals("Vontade")) {
+        						jCheckBox28.setSelected(true);
+        					}
+        					else {}
+        				}
+        			}	
+        		}
+        	}
+        });
+        jTextField43.addFocusListener(new FocusAdapter() {
+        	@Override
+        	public void focusLost(FocusEvent e) {
+        		String origemEscolhida = jTextField43.getText();
+        		if(mapaOrigens.containsKey(origemEscolhida)) {
+    				personagem.setOrigem(mapaOrigens.get(origemEscolhida));
+    				if(!periciafinal.containsValue(personagem.getOrigem().getPericiaTreinada1())) {
+    					String nomePericiaString = personagem.getOrigem().getPericiaTreinada1().getNome();
+    					if(nomePericiaString.equals("Acrobacia")) {
+    						jCheckBox1.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Adestramento")) {
+    						jCheckBox2.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Artes")) {
+    						jCheckBox3.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Atletismo")) {
+    						jCheckBox4.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Atualidade")) {
+    						jCheckBox5.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Ciência")) {
+    						jCheckBox6.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Crime")) {
+    						jCheckBox7.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Diplomacia")) {
+    						jCheckBox8.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Enganação")) {
+    						jCheckBox9.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Fortitude")) {
+    						jCheckBox10.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Furtividade")) {
+    						jCheckBox11.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Iniciativa")) {
+    						jCheckBox12.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Intimidação")) {
+    						jCheckBox13.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Intuição")) {
+    						jCheckBox14.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Investigação")) {
+    						jCheckBox15.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Luta")) {
+    						jCheckBox16.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Medicina")) {
+    						jCheckBox17.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Ocultismo")) {
+    						jCheckBox18.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Percepção")) {
+    						jCheckBox19.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Pilotagem")) {
+    						jCheckBox20.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Pontaria")) {
+    						jCheckBox21.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Profissão")) {
+    						jCheckBox22.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Reflexos")) {
+    						jCheckBox23.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Religião")) {
+    						jCheckBox24.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Sobrevivência")) {
+    						jCheckBox25.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Tática")) {
+    						jCheckBox26.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Tecnologia")) {
+    						jCheckBox27.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Vontade")) {
+    						jCheckBox28.setSelected(true);
+    					}
+    					else {}
+    				}
+    				if(!periciafinal.containsValue(personagem.getOrigem().getPericiaTreinada2())) {
+    					String nomePericiaString = personagem.getOrigem().getPericiaTreinada2().getNome();
+    					if(nomePericiaString.equals("Acrobacia")) {
+    						jCheckBox1.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Adestramento")) {
+    						jCheckBox2.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Artes")) {
+    						jCheckBox3.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Atletismo")) {
+    						jCheckBox4.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Atualidade")) {
+    						jCheckBox5.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Ciência")) {
+    						jCheckBox6.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Crime")) {
+    						jCheckBox7.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Diplomacia")) {
+    						jCheckBox8.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Enganação")) {
+    						jCheckBox9.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Fortitude")) {
+    						jCheckBox10.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Furtividade")) {
+    						jCheckBox11.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Iniciativa")) {
+    						jCheckBox12.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Intimidação")) {
+    						jCheckBox13.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Intuição")) {
+    						jCheckBox14.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Investigação")) {
+    						jCheckBox15.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Luta")) {
+    						jCheckBox16.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Medicina")) {
+    						jCheckBox17.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Ocultismo")) {
+    						jCheckBox18.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Percepção")) {
+    						jCheckBox19.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Pilotagem")) {
+    						jCheckBox20.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Pontaria")) {
+    						jCheckBox21.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Profissão")) {
+    						jCheckBox22.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Reflexos")) {
+    						jCheckBox23.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Religião")) {
+    						jCheckBox24.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Sobrevivência")) {
+    						jCheckBox25.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Tática")) {
+    						jCheckBox26.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Tecnologia")) {
+    						jCheckBox27.setSelected(true);
+    					}
+    					else if(nomePericiaString.equals("Vontade")) {
+    						jCheckBox28.setSelected(true);
+    					}
+    					else {}
+    				}
+    			}	
+        	}
+        });
 
         jLabel51.setText("Classe:");
 
-        jComboBox31.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Combatente", "Especialista", "Ocultista" }));
+        jComboBox31.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Combatente", "Especialista", "Ocultista" }));
         jComboBox31.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e){
-                if(e.getStateChange() == ItemEvent.SELECTED){                    
+                if(e.getStateChange() == ItemEvent.SELECTED){	
                     if("Combatente".equals((String) jComboBox31.getSelectedItem())){
-                        Combatente classe = new Combatente(personagem.getAtributos(), new Aniquilador());
+                        Combatente classe = new Combatente(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                         
                     }
                     else if("Especialista".equals((String) jComboBox31.getSelectedItem())){
-                        Especialista classe = new Especialista(personagem.getAtributos(), new AtiradorDeElite());
+                        Especialista classe = new Especialista(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                     }
                     else if("Ocultista".equals((String) jComboBox31.getSelectedItem())){
-                        Ocultista classe = new Ocultista(personagem.getAtributos(), new Conduite());
+                        Ocultista classe = new Ocultista(personagem.getAtributos(), null);
                         personagem.setClasse(classe);
                     }
+                    jTextField80.setText(String.valueOf(personagem.getClasse().getVida()));
+                    jTextField83.setText(String.valueOf(personagem.getClasse().getSanidade()));
+                    jTextField85.setText(String.valueOf(personagem.getClasse().getEsforco()));
                 }
             }
         });
@@ -1307,31 +1999,31 @@ public class FichaPersonagem extends javax.swing.JFrame {
 
         jLabel38.setText("Força:");
         jTextField75.getDocument().addDocumentListener(new PegaMudancaForcaDocumentListener());
-        if(personagem.getAtributos() == null){
-            jTextField75.setText("1");
+        if(personagem.getForca() == 0) {
+        	jTextField75.setText("1");
         }
 
         jLabel39.setText("Agilidade:");
         jTextField76.getDocument().addDocumentListener(new PegaMudancaAgilidadeDocumentListener());
-        if(personagem.getAtributos() == null){
-            jTextField76.setText("1");
+        if(personagem.getAgilidade() == 0) {
+        	jTextField76.setText("1");
         }
-
+            
         jLabel40.setText("Inteligência:");
         jTextField77.getDocument().addDocumentListener(new PegaMudancaIntelectoDocumentListener());
-        if(personagem.getAtributos() == null){
-            jTextField77.setText("1");
+        if(personagem.getIntelecto() == 0) {
+        	jTextField77.setText("1");
         }
-
+        
         jLabel41.setText("Vigor:");
         jTextField78.getDocument().addDocumentListener(new PegaMudancaVigorDocumentListener());
-        if(personagem.getAtributos() == null){
-            jTextField78.setText("1");
+        if(personagem.getVigor() == 0) {
+        	jTextField78.setText("1");
         }
 
         jLabel42.setText("Presença:");
         jTextField79.getDocument().addDocumentListener(new PegaMudancaPresencaDocumentListener());
-        if(personagem.getAtributos() == null){
+        if(personagem.getPresenca() == 0){
             jTextField79.setText("1");
         }
 
@@ -1412,18 +2104,6 @@ public class FichaPersonagem extends javax.swing.JFrame {
         jLabel47.setText("ATUAL");
 
         jLabel48.setText("MÁX");
-
-        jTextField80.setText("1");
-
-        jTextField81.setText("1");
-
-        jTextField82.setText("1");
-
-        jTextField83.setText("1");
-
-        jTextField84.setText("1");
-
-        jTextField85.setText("1");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -2150,9 +2830,22 @@ public class FichaPersonagem extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        
+        // Preenchendo ficha
         if(personagem.getNome() != null){
             jTextField41.setText(personagem.getNome());
             jTextField42.setText(personagem.getJogador());
+            if(personagem.getClasse() instanceof Combatente) {
+            	jComboBox31.setSelectedIndex(1);
+            }
+            else if(personagem.getClasse() instanceof Especialista) {
+            	jComboBox31.setSelectedIndex(2);
+            }
+            else if(personagem.getClasse() instanceof Ocultista) {
+            	jComboBox31.setSelectedIndex(3);
+            }
+            jTextField43.setText(personagem.getOrigem().getNome());
+            
 
             // Preenchendo Atributos em Ficha do Agente
             jTextField75.setText(String.valueOf(personagem.getForca()));
@@ -2600,7 +3293,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2623,7 +3316,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2646,7 +3339,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2673,7 +3366,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2701,7 +3394,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2729,7 +3422,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2761,7 +3454,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2791,7 +3484,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2821,7 +3514,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
         try{
             int valor;
             if(texto.isEmpty()){
-                valor = 0;
+                valor = 1;
             }
             else{
                 valor = Integer.parseInt(texto);
@@ -2855,7 +3548,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);
@@ -2885,7 +3578,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);
@@ -2915,7 +3608,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);
@@ -2949,7 +3642,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);
@@ -2971,7 +3664,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);
@@ -2993,7 +3686,7 @@ public class FichaPersonagem extends javax.swing.JFrame {
             try{
                 int valor;
                 if(texto.isEmpty()){
-                    valor = 0;
+                    valor = 1;
                 }
                 else{
                     valor = Integer.parseInt(texto);

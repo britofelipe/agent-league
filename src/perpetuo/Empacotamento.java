@@ -31,7 +31,7 @@ public class Empacotamento {
 
   // desserialização: recuperando os objetos gravados no arquivo binário "nomeArq"
   public static ArrayList<Personagem> lerArquivoBinario(String nomeArq)  {
-    ArrayList<Personagem> lista = new ArrayList();
+    ArrayList<Personagem> lista = new ArrayList<Personagem>();
     String pathDir = "./arquivo";
     File diretorio = new File(pathDir);
     if (!diretorio.isDirectory()) {
