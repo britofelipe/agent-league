@@ -132,7 +132,7 @@ public class Equipamento implements Serializable{
 			this.limiteDeItensPorCategoria[2] = 3;
 			this.limiteDeItensPorCategoria[3] = 2;
 		}
-		if(Arrays.equals(itensPorCategoria, limiteDeItensPorCategoria) == false) {
+		if(Arrays.equals(itensPorCategoria, limiteDeItensPorCategoria) != false) {
 			throw new ExcessoDeItensException();
 		}
 	}
@@ -176,9 +176,16 @@ public class Equipamento implements Serializable{
 	public int getCapacidadeDeCarga() {
 		return this.capacidadeDeCarga;
 	}
+	
+	public void setCapacidadeDeCarga(int forca) {
+		this.capacidadeDeCarga = 5 * forca;
+	}
 
 	public int getLimiteDeCarga() {
 		return this.limiteDeCarga;
+	}
+	public void setLimiteDeCarga() {
+		this.limiteDeCarga = this.capacidadeDeCarga * 2;
 	}
 
 	public boolean getSobrecarga() {
